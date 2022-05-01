@@ -1,12 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
-const cors = require('cors');
-const { json } = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-const app = express();
 router.use(express.json());
 
 router.post("/api/register", async (request, response) => {
