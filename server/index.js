@@ -34,7 +34,7 @@ app.post('/api/register', async (req, res)=> {
 
 app.post('/api/login', async (req, res)=> {
 
-    const user = await User.finOne({
+    const user = await User.findOne({
         email: req.body.email,
         password: req.body.password,
     })
