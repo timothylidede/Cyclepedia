@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+const express = require("express");
+const app = express();
+const cors = require("cors");
+const { MONGOURI } = require("./config/keys");
+const mongoose = require("mongoose");
+=======
 const express = require('express')
 const app = express()
 const cors = require('cors')
@@ -6,6 +13,7 @@ const mongoose = require('mongoose')
 const User = require('./models/user.model')
 const { json } = require('express')
 const jwt = require('jsonwebtoken')
+>>>>>>> c637d855b5f160bd2c12eec290d43ad1102b207d
 
 app.use(cors());
 app.use(express.json());
