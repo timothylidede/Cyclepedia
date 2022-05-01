@@ -1,8 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
+
 // COMPONENTSs
 import FormInput from '../ReusableComponets/FormInput';
 import Form from '../ReusableComponets/Form';
 import FormFooter from '../ReusableComponets/FormFooter';
+
 
 export default function SignUp() {
       // TO PASS PROPS TO THE LOGIN FORM
@@ -13,8 +15,24 @@ export default function SignUp() {
         phonenumber: '',
     };
     // ------ CHANGE INTO A DISPATCH ACTION --------- 
+    async function registerUser(form){
+        const response = await fetch('http://localhost:6969/api/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                form
+            }),
+        })
+
+        const data = await response.json()
+
+        console.log(data)
+    }
     const handleSignUp = (form) => {
         console.log("Submitted, Signed Up, User: ", form)
+        registerUser(form)        
     }
   return (
     <section className="signup_section">
