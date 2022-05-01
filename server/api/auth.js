@@ -1,34 +1,53 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
+const cors = require('cors');
+const { json } = require('express');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
-router.post("/api/register", async (req, res) => {
-  console.log(req.body);
+const app = express();
+router.use(express.json());
+
+router.post("/api/register", async (request, response) => {
+  console.log(request.body);
   try {
-    await User.create({
-      fullname: req.body.fullname,
-      email: req.body.email,
-      phonenumber: req.body.phonenumber,
-      password: req.body.password,
-    });
-    res.json({ status: "ok" });
+    request.body.form.password = await bcrypt.hash(request.body.form.password, 10 )
+    const user = await User.create(request.body.form);
+    response.json({ status: "ok", user });
   } catch (error) {
     console.log(error);
-    res.json({ status: "error", error: "Someting wong" });
+    response.json({ status: "error", error });
   }
 });
 
+
 router.post("/api/login", async (req, res) => {
   const user = await User.findOne({
-    email: req.body.email,
-    password: req.body.password,
+    email: req.body.form.email
   });
-  if (user) {
-    return res.json({ status: "ok", user: true });
-  } else {
-    return res.json({ status: "error", user: false });
+  
+  if(!user){
+    return {status: 'error', error: 'User with that email does not exist'};
   }
-  res.json({ status: "ok" });
+
+  const isPasswordValid = await bcrypt.compare(
+    req.body.form.password,
+    user.password
+  )
+
+  if(isPasswordValid) {
+    const token = jwt.sign(
+      {
+        name: user.name,
+        email: user.email,
+      },
+      'secret123'
+    );
+    return res.json({status: 'ok', user: token});
+  } else{
+    return res.json({ status: 'error', user: false})
+  }
 });
 
 module.exports = router;
