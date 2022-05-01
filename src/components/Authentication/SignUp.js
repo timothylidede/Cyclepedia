@@ -3,11 +3,14 @@ import React, {useState} from 'react'
 // COMPONENTSs
 import FormInput from '../ReusableComponets/FormInput';
 import Form from '../ReusableComponets/Form';
+import { useNavigate } from "react-router-dom";
 import FormFooter from '../ReusableComponets/FormFooter';
 
 
 export default function SignUp() {
       // TO PASS PROPS TO THE LOGIN FORM
+    const navigate = useNavigate()
+
     const initialValues = {
         fullname: '',
         email: '',
@@ -28,7 +31,11 @@ export default function SignUp() {
 
         const data = await response.json()
 
-        console.log(data)
+        if(data.status === 'ok'){
+            navigate('/login')
+        }else{
+            //handle status 500
+        }
     }
     const handleSignUp = (form) => {
         console.log("Submitted, Signed Up, User: ", form)

@@ -5,12 +5,14 @@ const { AppsSharp } = require('@mui/icons-material')
 const mongoose = require('mongoose')
 const User = require('./models/user.model')
 const { json } = require('express')
+const jwt = require('jsonwebtoken')
 
 mongoose.connect('mongodb+srv://leobikuri:DgLAdz5zWgcWpFmo@cyclepedia.yzhip.mongodb.net/Cyclepedia?retryWrites=true&w=majority')
 
 app.use(cors())
 app.use(express.json())
 
+//Our applicatoin port
 app.listen(6969, ()=> {
     console.log('Server started on 6969')
 })
@@ -35,11 +37,15 @@ app.post('/api/register', async (req, res)=> {
 app.post('/api/login', async (req, res)=> {
 
     const user = await User.findOne({
-        email: req.body.email,
-        password: req.body.password,
+        email: req.body.form.email,
+        password: req.body.form.password,
     })
     if(user){
-      return res.json({ status: 'ok', user: true})  
+        const token = jwt.sign({
+            fullname: user.fullname,
+            email: user.email,
+        }, 'secret')
+      return res.json({ status: 'ok', user: token})  
     }else{
         return res.json({ status: 'error', user: false})
     }
