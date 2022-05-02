@@ -21,22 +21,24 @@ const Login = () => {
         password: '',
     };
     async function loginUser(form){
+        const { email, password } = form;
         const response = await fetch('http://localhost:5000/api/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                form
+                email,
+                password
             }),
         })
 
         const data = await response.json()
 
-        if(data.user){
-            localStorage.setItem('token', data.user)
+        if(data.success){
+            localStorage.setItem('token', data.token)
             //Change page to homepage. Login Successful
-            window.location.href = ""//Landing page route
+            window.location.href = "/"//Landing page route
         }else{
             //I'll figure this out
         }

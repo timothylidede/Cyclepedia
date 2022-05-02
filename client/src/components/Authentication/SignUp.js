@@ -19,19 +19,23 @@ export default function SignUp() {
     };
     // ------ CHANGE INTO A DISPATCH ACTION --------- 
     async function registerUser(form){
+        const { fullname, phonenumber, email, password} = form;
         const response = await fetch('http://localhost:5000/api/auth/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                form
+                fullname,
+                phonenumber,
+                email,
+                password 
             }),
         })
 
         const data = await response.json()
 
-        if(data.status === 'ok'){
+        if(data.success){
             navigate('/login')
         }else{
             //handle status 500
