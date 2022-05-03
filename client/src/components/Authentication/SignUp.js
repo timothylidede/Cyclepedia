@@ -6,8 +6,6 @@ import Form from '../ReusableComponets/Form';
 import { useNavigate } from "react-router-dom";
 import FormFooter from '../ReusableComponets/FormFooter';
 
-const isNumberRegex = /\d/;
-const specialCharacterRegex = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
 
 export default function SignUp() {
       // TO PASS PROPS TO THE LOGIN FORM
@@ -61,11 +59,8 @@ export default function SignUp() {
                 label={"Email:"} type={"email"} name={"email"}
             />
             <FormInput 
-                label={"Password:"} type={"password"} name={"password"} password="" onFocus = {() => setPasswordFocused(true)} onChange = {e => onChangePassword(e.target.value)}
+                label={"Password:"} type={"password"} name={"password"} password=""
             />     
-            {passwordFocused && (
-                <PasswordStrengthIndicator validity={passwordValidity} />
-            )}
         </Form>
         <FormFooter text={"Already have an account?"} url={"/login"} urlText={"Log In"} />   
     </section>
