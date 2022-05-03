@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import {ArrowLeftOutlined, ArrowRightOutlined} from "@mui/icons-material";
-import happyman from "../assets/happyman.png"
 import {useState} from "react";
 import {sliderItems} from "../data";
 
@@ -67,9 +66,9 @@ const Desc = styled.p`
       letter-spacing: 3px;
 `
 const Button = styled.button`
-    padding: 10px;
-    font-size: 20px;
-    background-color: transparent;
+      padding: 10px;
+      font-size: 20px;
+      background-color: transparent;
 `
 
 const Slider = () => {
