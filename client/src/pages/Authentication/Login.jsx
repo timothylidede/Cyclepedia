@@ -1,6 +1,9 @@
 import styled from 'styled-components';
-import bg from '../assets/signinbg.png';
-import logo from '../assets/logo.png';
+import bg from '../../assets/signinbg.png';
+import logo from '../../assets/logo.png';
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 const Container = styled.div`
       width: 100vw;
@@ -94,7 +97,7 @@ const Message = styled.div`
       color: #494949;
 `
 
-const Link = styled.a`
+const NavLink = styled(Link)`
       margin: 5px 0;
       font-size: 15px;
       text-decoration: underline;
@@ -104,20 +107,79 @@ const Link = styled.a`
 `
 
 const Login = () => {
+      let navigate = useNavigate();
+
+      const [email, setEmail] = useState("");
+      const [password, setPassword] = useState("");
+      const [error, setError] = useState("");
+
+      // useEffect(() => {
+      //       if(localStorage.getItem("authToken")){
+      //             navigate("/");
+      //       }
+      // }, [navigate]);
+
+      const loginHandler = async (e) => {
+            e.preventDefault();
+
+            const config = {
+                  header: {
+                        "Content-Type": "application/json"
+                  },
+            };
+
+
+
+            try{
+                  const { data } = await axios.post(
+                        "api/auth/login",
+                        {
+                              email,
+                              password
+                        },
+                        config
+                  );
+
+                  localStorage.setItem("authToken", data.token)
+
+                  navigate("/");
+            }catch(error){
+                  setError(error.response.data.error);
+                  setTimeout(() => {
+                        setError("");
+                  }, 5000);
+            }
+      };
+
     return (
         <Container>
             <Wrapper>
                 <Image src={logo}/>
                 <Title>Sign In</Title>
-                <Form>
+                <Form onSubmit={loginHandler}>
                     <Hr/>
                     <Label>Email*</Label>
-                    <Input placeholder="example@gmail.com"></Input>
+                    <Input 
+                    type="email"
+                    required
+                    id="email"
+                    placeholder="example@gmail.com"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    ></Input>
                     <Label>Password*</Label>
-                    <Input placeholder="password"></Input>
+                    <Input 
+                    type="password"
+                    requiredid="password"
+                    autoComplete="true"
+                    placeholder="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+
+                    ></Input>
                     <Action>
                         <Button>SIGN IN</Button>
-                        <Message>Don't have an account? <Link><b>Create Account</b></Link></Message>
+                        <Message>Don't have an account? <NavLink to="/signup"><b>Create Account</b></NavLink></Message>
                     </Action>
                 </Form>
             </Wrapper>

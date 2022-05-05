@@ -2,6 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import {Search, ShoppingCartOutlined} from "@mui/icons-material";
 import {Badge} from "@mui/material";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
     height: 60px;
@@ -22,6 +23,15 @@ const Left = styled.div`
 const Language = styled.span`
     font-size: 14px;
     cursor: pointer;
+`
+
+const NavLink = styled(Link)`
+      margin: 5px 0;
+      font-size: 15px;
+      text-decoration: none;
+      cursor: pointer;
+      color: #fd7b48;
+      font-family: "Roboto Thin", sans-serif;
 `
 
 const SearchContainer = styled.div`
@@ -71,8 +81,9 @@ const Navbar = () => {
                 </Left>
                 <Center><Logo>CYCLEPEDIA.</Logo></Center>
                 <Right>
-                    <MenuItem>REGISTER</MenuItem>
-                    <MenuItem>SIGN IN</MenuItem>
+                    {localStorage.getItem("authToken") ? 
+                    <MenuItem><NavLink to="/#">LOGOUT</NavLink></MenuItem>
+                    : <MenuItem><NavLink to="/login">SIGN IN</NavLink></MenuItem>}
                     <MenuItem>
                         <Badge badgeContent={4} color="primary">
                             <ShoppingCartOutlined color="action" />
