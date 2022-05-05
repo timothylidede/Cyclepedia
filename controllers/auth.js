@@ -2,8 +2,9 @@ const User = require('../models/user');
 const ErrorResponse = require('../utils/errorResponse')
 
 exports.register = async (req, res, next) => {
-  const { fullname, phonenumber, email, password} = req.body;
-  try{
+  const { firstname, lastname, phonenumber, email, password} = req.body;
+  const fullname = `${firstname} ${lastname}`
+  try{ 
     const user = await User.create({
       fullname, 
       phonenumber, 
