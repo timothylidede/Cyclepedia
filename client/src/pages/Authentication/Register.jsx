@@ -107,6 +107,10 @@ const NavLink = styled(Link)`
       color: #fd7b48;
       font-family: "Roboto Thin", sans-serif;
 `
+const Span = styled.span`
+      color: red;
+      font-weight: bold;
+`
 
 const Register = () => {
       let navigate = useNavigate();
@@ -165,6 +169,7 @@ const Register = () => {
             <Image src={logo}/>
             <Wrapper>
                 <Title>Create Account</Title>
+                {error && <Span className="error-message">{error}</Span>}
                 <Form onSubmit={registerHandler}>
                     <Hr/>
                     <Label>First Name*</Label>

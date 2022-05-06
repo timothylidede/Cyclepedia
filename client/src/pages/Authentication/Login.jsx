@@ -105,6 +105,10 @@ const NavLink = styled(Link)`
       color: #fd7b48;
       font-family: "Roboto Thin", sans-serif;
 `
+const Span = styled.span`
+      color: red;
+      font-weight: bold;
+`
 
 const Login = () => {
       let navigate = useNavigate();
@@ -156,6 +160,9 @@ const Login = () => {
             <Wrapper>
                 <Image src={logo}/>
                 <Title>Sign In</Title>
+
+                {error && <Span>{error}</Span>}
+
                 <Form onSubmit={loginHandler}>
                     <Hr/>
                     <Label>Email*</Label>
