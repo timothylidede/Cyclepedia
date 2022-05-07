@@ -59,6 +59,7 @@ const Product = new mongoose.Schema(
       type: Number,
       default: 0
     },
+<<<<<<< HEAD
     reviews: [
       {
         user_id: {
@@ -79,13 +80,19 @@ const Product = new mongoose.Schema(
         }
       }
     ],
-    createdAt: {
+    cretedAt: {
       type: Date,
       default: Date.now
     }
+=======
+    posted_by: {
+      type: ObjectId,
+      ref: "User",
+    },
+>>>>>>> ef8d3622ce0a8782963fa7a9084c2ef1a2026edc
   },
   { timestamps: true },
-  { collection: "products" }
+  { collecton: "products" }
 );
 
 const model = mongoose.model("Product", Product);
