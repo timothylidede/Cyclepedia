@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema.Types;
 
 const Product = new mongoose.Schema(
   {
@@ -17,6 +18,10 @@ const Product = new mongoose.Schema(
     image: {
       type: String,
       required: [true, "Product description is required"],
+    },
+    posted_by: {
+      type: ObjectId,
+      ref: "User",
     },
   },
   { timestamps: true },
