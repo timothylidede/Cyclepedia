@@ -175,7 +175,8 @@ const Register = () => {
                     <Label>First Name*</Label>
                     <Input
                     type="text"
-                    requiredid="fname" 
+                    required
+                    id="fname" 
                     placeholder="Enter your first name"
                     value={firstname}
                     onChange={(e) => setFirstname(e.target.value)}
