@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {FavoriteBorderOutlined, SearchOutlined, ShoppingCartOutlined} from "@mui/icons-material";
+import React from "react";
 
 const Info = styled.div`
       opacity: 0;

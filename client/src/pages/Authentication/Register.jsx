@@ -3,7 +3,8 @@ import bg from '../../assets/Registrationbg.png';
 import logo from "../../assets/logo.png";
 import axios from "axios"
 import { useNavigate, Link } from "react-router-dom";
-import { useState } from "react"
+import { useState } from "react";
+import React from 'react';
 
 const Container = styled.div`
       width: 100vw;

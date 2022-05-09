@@ -4,6 +4,7 @@ import logo from '../../assets/logo.png';
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import React from 'react';
 
 const Container = styled.div`
       width: 100vw;
