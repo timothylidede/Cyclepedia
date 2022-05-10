@@ -35,8 +35,8 @@ const Wrapper = styled.div`
 `
 
 const Title = styled.h1`
-      margin-top: 40px;
-      font-size: 24px;
+      margin-top: 10px;
+      font-size: 35px;
       color: #605f5f;
       font-family: "Roboto Regular", sans-serif;
       font-weight: 600;
