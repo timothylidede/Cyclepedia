@@ -147,7 +147,7 @@ const Login = () => {
                         config
                   );
 
-                  localStorage.setItem("authToken", data.token)
+                  localStorage.setItem("authToken", data.token);
 
                   navigate("/");
             }catch(error){
