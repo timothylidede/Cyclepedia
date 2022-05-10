@@ -30,7 +30,7 @@ const NavLink = styled(Link)`
       font-size: 15px;
       text-decoration: none;
       cursor: pointer;
-      color: #fd7b48;
+      color: teal;
       font-family: "Roboto Thin", sans-serif;
 `
 
@@ -50,6 +50,7 @@ const Input = styled.input`
 const Center = styled.div`
     flex: 1;
   text-align: center;
+  
 `
 
 const Logo = styled.h1`
@@ -67,10 +68,11 @@ const MenuItem = styled.div`
     cursor: pointer;
     margin-left: 25px;
 `
+
 const Navbar = () => {
     return (
 
-        <Container>
+        <Container >
             <Wrapper>
                 <Left>
                     <Language>EN</Language>
@@ -79,7 +81,7 @@ const Navbar = () => {
                         <Search style={{color:"gray", fontSize: 16}}/>
                     </SearchContainer>
                 </Left>
-                <Center><Logo>CYCLEPEDIA.</Logo></Center>
+                <Center><a href="/">CYCLEPEDIA.</a></Center>
                 <Right>
                     {localStorage.getItem("authToken") ? 
                     <MenuItem><NavLink to="/#">LOGOUT</NavLink></MenuItem>
@@ -92,6 +94,7 @@ const Navbar = () => {
 
                 </Right>
             </Wrapper>
+            
         </Container>
     );
 }

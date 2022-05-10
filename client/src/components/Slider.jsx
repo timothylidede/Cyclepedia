@@ -67,9 +67,16 @@ const Desc = styled.p`
       letter-spacing: 3px;
 `
 const Button = styled.button`
-      padding: 10px;
+      padding: 10px 20px;
+      border: none;
       font-size: 20px;
-      background-color: transparent;
+      background-color: teal;
+      border-radius: 1em;
+      cursor: pointer;
+      &:hover {
+          background-color:#00a86b;
+        }
+
 `
 
 const Slider = () => {

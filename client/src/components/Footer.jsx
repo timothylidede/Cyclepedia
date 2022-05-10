@@ -4,6 +4,7 @@ import React from "react";
 
 const Container = styled.div`
     display: flex;
+    width: 100%;
 `
 const Left = styled.div`
     flex: 1;

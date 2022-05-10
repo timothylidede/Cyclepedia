@@ -5,12 +5,12 @@ import React from "react";
 
 const Container = styled.div`
       padding: 20px;
+      width: 100%;
       display: flex;
       flex-basis: 400px ;
       flex-wrap: wrap;
       justify-content: space-between;
 `
-
 const Products = () => {
     return (
         <Container>

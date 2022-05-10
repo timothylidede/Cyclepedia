@@ -20,10 +20,11 @@ const Info = styled.div`
 
 const Container = styled.div`
       flex: 1;
+      width: 90%;
       flex-basis: 20%;
       margin: 5px;
       min-width: 280px;
-      height: 350px;
+      height: 250px;
       display: flex;
       align-items: center;
       justify-content: center;
