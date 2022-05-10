@@ -24,7 +24,7 @@ const Image = styled.img`
 const Wrapper = styled.div`
       position: relative;
       padding: 20px;
-      width: 30%;
+      width: 35%;
       height: 75%;
       background-color: white;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -55,16 +55,18 @@ const Form = styled.form`
 `
 
 const Label = styled.label`
+      display:inline-block;
       margin-left: 25px;
       color: #504f4f;
       font-family: "Roboto Bold", sans-serif;
+      width: 8vw;
 
 `
 const Input = styled.input`
       flex: 1;
-      min-width: 40%;
+      min-width: 60%;
       margin: 10px 0 20px 0;
-      padding: 15px 15px 15px 40px;
+      padding: 5px 5px 5px 5px;
       border-radius: 5px;
       border: 1.5px solid lightgray;
       background-color: #efecec;
@@ -95,7 +97,7 @@ const Button = styled.button`
 `
 
 const Message = styled.div`
-      margin-top: 20px;
+      margin-top: 5px;
       font-family: "Roboto Thin",sans-serif;
       color: #494949;
 `
@@ -111,6 +113,10 @@ const NavLink = styled(Link)`
 const Span = styled.span`
       color: red;
       font-weight: bold;
+`
+const InputWrapper = styled.div`
+      display: flex;
+      align-items: center;
 `
 
 const Login = () => {
@@ -168,6 +174,7 @@ const Login = () => {
 
                 <Form onSubmit={loginHandler}>
                     <Hr/>
+                    <div>
                     <Label>Email*</Label>
                     <Input 
                     type="email"
@@ -177,6 +184,8 @@ const Login = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
                     ></Input>
+                    </div>
+                    <div>
                     <Label>Password*</Label>
                     <Input 
                     type="password"
@@ -185,8 +194,8 @@ const Login = () => {
                     placeholder="password"
                     onChange={(e) => setPassword(e.target.value)}
                     value={password}
-
                     ></Input>
+                    </div>
                     <Action>
                         <Button>SIGN IN</Button>
                         <Message>Don't have an account? <NavLink to="/signup"><b>Create Account</b></NavLink></Message>

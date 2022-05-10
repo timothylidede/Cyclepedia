@@ -24,8 +24,8 @@ const Image = styled.img`
 
 const Wrapper = styled.div`
       
-      width: 35%;
-      height: 110%;
+      width: 45%;
+      height: 100%;
       position: relative;
       margin: 50px 10px;
       padding: 20px 20px;
@@ -59,15 +59,17 @@ const Form = styled.form`
 `
 
 const Label = styled.label`
+      display: inline-block;
       margin-left: 25px;
       color: #504f4f;
       font-family: "Roboto Bold", sans-serif;
+      width: 12vw;
 `
 
 const Input = styled.input`
       flex: 1;
-      min-width: 40%;
-      margin: 8px 0 12px 0;
+      min-width: 55%;
+      margin: 5px 0 12px 0;
       padding: 5px 5px 5px 20px;
       border-radius: 5px;
       border: 1.5px solid lightgray;
@@ -177,6 +179,7 @@ const Register = () => {
                 {error && <Span className="error-message">{error}</Span>}
                 <Form onSubmit={registerHandler}>
                     <Hr/>
+                    <div>
                     <Label>First Name*</Label>
                     <Input
                     type="text"
@@ -187,6 +190,8 @@ const Register = () => {
                     onChange={(e) => setFirstname(e.target.value)}
                     >
                     </Input>
+                    </div>
+                    <div>
                     <Label>Last Name*</Label>
                     <Input 
                     type="text"
@@ -196,6 +201,8 @@ const Register = () => {
                     value={lastname}
                     onChange={(e) => setLastname(e.target.value)}
                     ></Input>
+                    </div>
+                    <div>
                     <Label>Phone Number*</Label>
                     <Input 
                     type="text"
@@ -205,6 +212,8 @@ const Register = () => {
                     value={phonenumber}
                     onChange={(e) => setPhonenumber(e.target.value)}
                     ></Input>
+                    </div>
+                    <div>
                     <Label>Email*</Label>
                     <Input 
                     type="email"
@@ -214,6 +223,8 @@ const Register = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     ></Input>
+                    </div>
+                    <div>
                     <Label>Password*</Label>
                     <Input 
                     type="password"
@@ -224,6 +235,8 @@ const Register = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     ></Input>
+                    </div>
+                    <div>
                     <Label>Confirm Password*</Label>
                     <Input 
                     type='password'
@@ -233,6 +246,7 @@ const Register = () => {
                     placeholder="Confirm password"
                     value={confirmpassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}></Input>
+                    </div>
                     <Action>
                         <Button type="submit">CREATE</Button>
                         <Message>Already have an account? <NavLink to='/login'><b>Log In</b></NavLink></Message>
