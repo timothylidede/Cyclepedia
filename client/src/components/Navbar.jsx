@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import {Search, ShoppingCartOutlined} from "@mui/icons-material";
 import {Badge} from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Container = styled.div`
     height: 60px;
@@ -68,6 +68,14 @@ const MenuItem = styled.div`
     margin-left: 25px;
 `
 const Navbar = () => {
+
+    let navigate = useNavigate();
+
+    const logoutHandler = () =>{
+        localStorage.removeItem("authToken");
+        navigate("/");
+    }
+
     return (
 
         <Container>
@@ -82,7 +90,7 @@ const Navbar = () => {
                 <Center><Logo>CYCLEPEDIA.</Logo></Center>
                 <Right>
                     {localStorage.getItem("authToken") ? 
-                    <MenuItem><NavLink to="/#">LOGOUT</NavLink></MenuItem>
+                    <MenuItem><NavLink to="#" onClick={logoutHandler}>SIGN OUT</NavLink></MenuItem>
                     : <MenuItem><NavLink to="/login">SIGN IN</NavLink></MenuItem>}
                     <MenuItem>
                         <Badge badgeContent={4} color="primary">
