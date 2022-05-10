@@ -1,4 +1,5 @@
-import styled from "styled-components"
+import styled from "styled-components";
+import React from "react";
 
 const Container = styled.div`
   flex: 1;
@@ -37,12 +38,15 @@ const Title = styled.h1`
 const Button = styled.button`
   border: none;
   font-size: 20px;
-  padding: 20px;
-  background-color: white;
-  color: gray;
+  padding: 10px 20px;
+  background-color: teal;
+  color: white;
   cursor: pointer;
   font-weight: 600;
   border-radius: 25px;
+  &:hover {
+    background-color:#00a86b;
+  }
 `
 
 const CategoryItem = ({item}) => {

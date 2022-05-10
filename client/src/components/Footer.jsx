@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import {Facebook, Instagram, MailOutline, PaymentsTwoTone, Phone, Pinterest, Room, Twitter} from "@mui/icons-material";
+import React from "react";
 
 const Container = styled.div`
     display: flex;
+    width: 100%;
 `
 const Left = styled.div`
     flex: 1;

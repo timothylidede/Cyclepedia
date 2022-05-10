@@ -3,11 +3,13 @@ import bg from '../../assets/Registrationbg.png';
 import logo from "../../assets/logo.png";
 import axios from "axios"
 import { useNavigate, Link } from "react-router-dom";
-import { useState } from "react"
+import { useState } from "react";
+import React from 'react';
 
 const Container = styled.div`
       width: 100vw;
       height: 100vh;
+      margin-top: 0px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -16,23 +18,24 @@ const Container = styled.div`
 `
 
 const Image = styled.img`
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 10%;
+     width: 70%;
+     margin-bottom: 20px;
 `
 
 const Wrapper = styled.div`
-      position: relative;
-      padding: 20px;
+      
       width: 35%;
-      height: 85%;
+      height: 110%;
+      position: relative;
+      margin: 50px 10px;
+      padding: 20px 20px;
       background-color: white;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       border-radius: 5px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      
 `
 
 const Title = styled.h1`
@@ -49,6 +52,7 @@ const Hr = styled.hr`
 
 const Form = styled.form`
       width: 90%;
+      height: 90%;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -63,8 +67,8 @@ const Label = styled.label`
 const Input = styled.input`
       flex: 1;
       min-width: 40%;
-      margin: 10px 0 20px 0;
-      padding: 15px 15px 15px 40px;
+      margin: 8px 0 12px 0;
+      padding: 5px 5px 5px 20px;
       border-radius: 5px;
       border: 1.5px solid lightgray;
       background-color: #efecec;
@@ -81,17 +85,17 @@ const Action = styled.div`
 `
 
 const Button = styled.button`
-      width: 30%;
+      padding: 10px 20px;
       border: none;
-      padding: 10px 5px;
+      font-size: 20px;
+      color: white;     
       background-color: teal;
-      color: white;
+      border-radius: 1em;
       cursor: pointer;
-      margin-top: 25px;
-      margin-bottom: 10px;
-      border-radius: 55px;
-      font-weight: 700;
-      font-size: 24px;
+      margin:10px;
+      &:hover {
+            background-color:#00a86b;
+      }
 `
 
 const Message = styled.div`
@@ -166,8 +170,9 @@ const Register = () => {
 
     return (
         <Container>
-            <Image src={logo}/>
+            
             <Wrapper>
+                  <Image src={logo}/>
                 <Title>Create Account</Title>
                 {error && <Span className="error-message">{error}</Span>}
                 <Form onSubmit={registerHandler}>

@@ -4,6 +4,7 @@ import logo from '../../assets/logo.png';
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import React from 'react';
 
 const Container = styled.div`
       width: 100vw;
@@ -13,6 +14,7 @@ const Container = styled.div`
       justify-content: center;
       background-image:url(${bg});
       background-size: cover;
+      padding-bottom: 20px;
 `
 
 const Image = styled.img`
@@ -23,7 +25,7 @@ const Wrapper = styled.div`
       position: relative;
       padding: 20px;
       width: 30%;
-      height: 67%;
+      height: 75%;
       background-color: white;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       border-radius: 5px;
@@ -78,17 +80,18 @@ const Action = styled.div`
 `
 
 const Button = styled.button`
-      width: 40%;
+      padding: 10px 20px;
       border: none;
-      padding: 15px 5px;
+      font-size: 20px;
+      color: white;     
       background-color: teal;
-      color: white;
+      border-radius: 1em;
       cursor: pointer;
-      margin-top: 50px;
-      margin-bottom: 10px;
-      border-radius: 55px;
-      font-weight: 700;
-      font-size: 24px;
+      margin:10px;
+      &:hover {
+          background-color:#00a86b;
+        }
+
 `
 
 const Message = styled.div`

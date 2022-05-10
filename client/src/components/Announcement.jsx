@@ -1,4 +1,5 @@
-import styled from "styled-components"
+import styled from "styled-components";
+import React from "react";
 
 const Container = styled.div`
     height: 30px;
@@ -14,7 +15,7 @@ const Container = styled.div`
 const Announcement = () => {
     return (
         <Container>
-            Super Deal! Fungua mwaka na nduthi mpya! Discounts on orders over Ksh 500,000!
+            <p>Super Deal! | Free Shipping on all Orders! | 20% Discount on orders over KES 250,000!</p>
         </Container>
     );
 }
