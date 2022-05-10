@@ -2,7 +2,6 @@ require("dotenv").config({ path: "./.env" });
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const { AppsSharp } = require("@mui/icons-material");
 const connectDB = require("./config/db");
 const errorHandler = require("./middleware/error");
 
