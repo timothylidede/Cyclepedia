@@ -14,7 +14,6 @@ const Container = styled.div`
       justify-content: center;
       background-image:url(${bg});
       background-size: cover;
-      padding-bottom: 20px;
 `
 
 const Image = styled.img`
@@ -25,7 +24,7 @@ const Wrapper = styled.div`
       position: relative;
       padding: 20px;
       width: 30%;
-      height: 75%;
+      height: 67%;
       background-color: white;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       border-radius: 5px;
@@ -80,18 +79,17 @@ const Action = styled.div`
 `
 
 const Button = styled.button`
-      padding: 10px 20px;
+      width: 40%;
       border: none;
-      font-size: 20px;
-      color: white;     
+      padding: 15px 5px;
       background-color: teal;
-      border-radius: 1em;
+      color: white;
       cursor: pointer;
-      margin:10px;
-      &:hover {
-          background-color:#00a86b;
-        }
-
+      margin-top: 50px;
+      margin-bottom: 10px;
+      border-radius: 55px;
+      font-weight: 700;
+      font-size: 24px;
 `
 
 const Message = styled.div`
@@ -147,7 +145,7 @@ const Login = () => {
                         config
                   );
 
-                  localStorage.setItem("authToken", data.token);
+                  localStorage.setItem("authToken", data.token)
 
                   navigate("/");
             }catch(error){
