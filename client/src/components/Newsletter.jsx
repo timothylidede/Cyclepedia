@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {Send} from "@mui/icons-material";
+import React from "react";
 
 const Container = styled.div`
       height: 60vh;
@@ -38,6 +39,9 @@ const Button = styled.button`
       border: none;
       background-color: teal;
       color: white;
+      &:hover {
+            background-color:#00a86b;
+          }
 `
 const Newsletter = () => {
     return (

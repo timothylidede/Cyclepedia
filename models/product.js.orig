@@ -79,13 +79,13 @@ const Product = new mongoose.Schema(
         }
       }
     ],
-    createdAt: {
+    cretedAt: {
       type: Date,
       default: Date.now
     }
   },
   { timestamps: true },
-  { collection: "products" }
+  { collecton: "products" }
 );
 
 const model = mongoose.model("Product", Product);

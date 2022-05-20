@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import {Search, ShoppingCartOutlined} from "@mui/icons-material";
 import {Badge} from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Container = styled.div`
     height: 60px;
@@ -30,7 +30,7 @@ const NavLink = styled(Link)`
       font-size: 15px;
       text-decoration: none;
       cursor: pointer;
-      color: #fd7b48;
+      color: teal;
       font-family: "Roboto Thin", sans-serif;
 `
 
@@ -50,6 +50,7 @@ const Input = styled.input`
 const Center = styled.div`
     flex: 1;
   text-align: center;
+  
 `
 
 const Logo = styled.h1`
@@ -67,10 +68,19 @@ const MenuItem = styled.div`
     cursor: pointer;
     margin-left: 25px;
 `
+
 const Navbar = () => {
+
+    let navigate = useNavigate();
+
+    const logoutHandler = () =>{
+        localStorage.removeItem("authToken");
+        navigate("/");
+    }
+
     return (
 
-        <Container>
+        <Container >
             <Wrapper>
                 <Left>
                     <Language>EN</Language>
@@ -79,10 +89,10 @@ const Navbar = () => {
                         <Search style={{color:"gray", fontSize: 16}}/>
                     </SearchContainer>
                 </Left>
-                <Center><Logo>CYCLEPEDIA.</Logo></Center>
+                <Center><a href="/">CYCLEPEDIA.</a></Center>
                 <Right>
                     {localStorage.getItem("authToken") ? 
-                    <MenuItem><NavLink to="/#">LOGOUT</NavLink></MenuItem>
+                    <MenuItem><NavLink to="#" onClick={logoutHandler}>SIGN OUT</NavLink></MenuItem>
                     : <MenuItem><NavLink to="/login">SIGN IN</NavLink></MenuItem>}
                     <MenuItem>
                         <Badge badgeContent={4} color="primary">
@@ -92,6 +102,7 @@ const Navbar = () => {
 
                 </Right>
             </Wrapper>
+            
         </Container>
     );
 }
