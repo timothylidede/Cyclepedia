@@ -7,13 +7,13 @@ const Product = new mongoose.Schema(
       type: String,
       required: [true, "Product name is required"],
       trim: true,
-      maxLength: [100, "Product name cannot exceed 100 characters"]
+      maxLength: [100, "Product name cannot exceed 100 characters"],
     },
     price: {
       type: Number,
       required: [true, "Price is required"],
       maxLength: [8],
-      default: [0.0]
+      default: [0.0],
     },
     description: {
       type: String,
@@ -21,19 +21,19 @@ const Product = new mongoose.Schema(
     },
     ratings: {
       type: Number,
-      default: 0
+      default: 0,
     },
     images: [
       {
-        public_id:{
+        public_id: {
           type: String,
-          required: true
+          required: true,
         },
-        url:{
+        url: {
           type: String,
-          required: true
+          required: true,
         },
-      }
+      },
     ],
     category: {
       type: String,
@@ -45,44 +45,43 @@ const Product = new mongoose.Schema(
           "Touring",
           "Standard",
           "Dual-Purpose",
-          "Dirt"
+          "Dirt",
         ],
         message: "Select correct product category",
-      }
+      },
     },
     seller: {
       type: String,
       required: [true, "Enter product seller"],
-
     },
     numOfReviews: {
       type: Number,
-      default: 0
+      default: 0,
     },
     reviews: [
       {
         user_id: {
           type: String,
-          required: true
+          required: true,
         },
         name: {
           type: String,
-          required: true
+          required: true,
         },
         rating: {
           type: Number,
-          required: true
+          required: true,
         },
         comment: {
           type: String,
-          required: true
-        }
-      }
+          required: true,
+        },
+      },
     ],
     createdAt: {
       type: Date,
-      default: Date.now
-    }
+      default: Date.now,
+    },
   },
   { timestamps: true },
   { collection: "products" }
