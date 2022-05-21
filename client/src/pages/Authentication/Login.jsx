@@ -14,7 +14,6 @@ const Container = styled.div`
       justify-content: center;
       background-image:url(${bg});
       background-size: cover;
-      padding-bottom: 20px;
 `
 
 const Image = styled.img`
@@ -24,8 +23,8 @@ const Image = styled.img`
 const Wrapper = styled.div`
       position: relative;
       padding: 20px;
-      width: 35%;
-      height: 75%;
+      width: 30%;
+      height: 67%;
       background-color: white;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       border-radius: 5px;
@@ -35,8 +34,8 @@ const Wrapper = styled.div`
 `
 
 const Title = styled.h1`
-      margin-top: 10px;
-      font-size: 35px;
+      margin-top: 40px;
+      font-size: 24px;
       color: #605f5f;
       font-family: "Roboto Regular", sans-serif;
       font-weight: 600;
@@ -55,18 +54,16 @@ const Form = styled.form`
 `
 
 const Label = styled.label`
-      display:inline-block;
       margin-left: 25px;
       color: #504f4f;
       font-family: "Roboto Bold", sans-serif;
-      width: 8vw;
 
 `
 const Input = styled.input`
       flex: 1;
-      min-width: 60%;
+      min-width: 40%;
       margin: 10px 0 20px 0;
-      padding: 5px 5px 5px 5px;
+      padding: 15px 15px 15px 40px;
       border-radius: 5px;
       border: 1.5px solid lightgray;
       background-color: #efecec;
@@ -82,22 +79,21 @@ const Action = styled.div`
 `
 
 const Button = styled.button`
-      padding: 10px 20px;
+      width: 40%;
       border: none;
-      font-size: 20px;
-      color: white;     
+      padding: 15px 5px;
       background-color: teal;
-      border-radius: 1em;
+      color: white;
       cursor: pointer;
-      margin:10px;
-      &:hover {
-          background-color:#00a86b;
-        }
-
+      margin-top: 50px;
+      margin-bottom: 10px;
+      border-radius: 55px;
+      font-weight: 700;
+      font-size: 24px;
 `
 
 const Message = styled.div`
-      margin-top: 5px;
+      margin-top: 20px;
       font-family: "Roboto Thin",sans-serif;
       color: #494949;
 `
@@ -113,10 +109,6 @@ const NavLink = styled(Link)`
 const Span = styled.span`
       color: red;
       font-weight: bold;
-`
-const InputWrapper = styled.div`
-      display: flex;
-      align-items: center;
 `
 
 const Login = () => {
@@ -153,7 +145,7 @@ const Login = () => {
                         config
                   );
 
-                  localStorage.setItem("authToken", data.token);
+                  localStorage.setItem("authToken", data.token)
 
                   navigate("/");
             }catch(error){
@@ -174,7 +166,6 @@ const Login = () => {
 
                 <Form onSubmit={loginHandler}>
                     <Hr/>
-                    <div>
                     <Label>Email*</Label>
                     <Input 
                     type="email"
@@ -184,8 +175,6 @@ const Login = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
                     ></Input>
-                    </div>
-                    <div>
                     <Label>Password*</Label>
                     <Input 
                     type="password"
@@ -194,8 +183,8 @@ const Login = () => {
                     placeholder="password"
                     onChange={(e) => setPassword(e.target.value)}
                     value={password}
+
                     ></Input>
-                    </div>
                     <Action>
                         <Button>SIGN IN</Button>
                         <Message>Don't have an account? <NavLink to="/signup"><b>Create Account</b></NavLink></Message>
