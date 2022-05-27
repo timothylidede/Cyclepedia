@@ -7,7 +7,10 @@ import  { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import Login from "./pages/Authentication/Login";
 import Register from "./pages/Authentication/Register";
-import Home from "./pages/Home"
+import Home from "./pages/Home";
+import Cart from "./pages/Cart";
+import Product  from './pages/Product';
+import ProductList from './pages/ProductList';
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
           <Route path="login" element={ <Login/> }/>
           <Route path="signup" element={ <Register/> }/>
           <Route path="/" element={ <Home/> } />
+          <Route path="cart" element={ <Cart/> } />
+          <Route path="product" element={ <Product/> } />
+          <Route path="products" element={ <ProductList/> } />
         </Routes>
     </BrowserRouter>
   );
