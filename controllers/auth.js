@@ -1,6 +1,6 @@
 const User = require('../models/user');
 const ErrorResponse = require('../utils/errorResponse');
-const sendEmail = require('../utils/sendEmail')
+const sendEmail = require('../utils/sendEmail');
 const crypto = require('crypto');
 
 exports.register = async (req, res, next) => {
@@ -65,7 +65,7 @@ exports.forgotpassword = async (req, res, next) => {
 
     await user.save();
 
-    const resetUrl = `http://localhost:3000/resetpassword/${resetToken}`;
+    const resetUrl = `http://localhost:3000/passwordreset/${resetToken}`;
     
     const message = `
     <!DOCTYPE html>
