@@ -9,7 +9,6 @@ import React from 'react';
 const Container = styled.div`
       width: 100vw;
       height: 100vh;
-      margin-top: 0px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -18,24 +17,23 @@ const Container = styled.div`
 `
 
 const Image = styled.img`
-     width: 70%;
-     margin-bottom: 20px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 10%;
 `
 
 const Wrapper = styled.div`
-      
-      width: 45%;
-      height: 100%;
       position: relative;
-      margin: 50px 10px;
-      padding: 20px 20px;
+      padding: 20px;
+      width: 35%;
+      height: 85%;
       background-color: white;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       border-radius: 5px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      
 `
 
 const Title = styled.h1`
@@ -52,25 +50,22 @@ const Hr = styled.hr`
 
 const Form = styled.form`
       width: 90%;
-      height: 90%;
       position: relative;
       display: flex;
       flex-direction: column;
 `
 
 const Label = styled.label`
-      display: inline-block;
       margin-left: 25px;
       color: #504f4f;
       font-family: "Roboto Bold", sans-serif;
-      width: 12vw;
 `
 
 const Input = styled.input`
       flex: 1;
-      min-width: 55%;
-      margin: 5px 0 12px 0;
-      padding: 5px 5px 5px 20px;
+      min-width: 40%;
+      margin: 10px 0 20px 0;
+      padding: 15px 15px 15px 40px;
       border-radius: 5px;
       border: 1.5px solid lightgray;
       background-color: #efecec;
@@ -87,16 +82,19 @@ const Action = styled.div`
 `
 
 const Button = styled.button`
-      padding: 10px 20px;
+      width: 30%;
       border: none;
-      font-size: 20px;
-      color: white;     
+      padding: 10px 5px;
       background-color: teal;
-      border-radius: 1em;
+      color: white;
       cursor: pointer;
-      margin:10px;
+      margin-top: 25px;
+      margin-bottom: 10px;
+      border-radius: 55px;
+      font-weight: 700;
+      font-size: 24px;
       &:hover {
-            background-color:#00a86b;
+            background-color:#fd7b48;
       }
 `
 
@@ -167,19 +165,16 @@ const Register = () => {
                         setError("");
                   }, 5000);
             }
-
       }
 
     return (
         <Container>
-            
+            <Image src={logo}/>
             <Wrapper>
-                  <Image src={logo}/>
                 <Title>Create Account</Title>
                 {error && <Span className="error-message">{error}</Span>}
                 <Form onSubmit={registerHandler}>
                     <Hr/>
-                    <div>
                     <Label>First Name*</Label>
                     <Input
                     type="text"
@@ -190,8 +185,6 @@ const Register = () => {
                     onChange={(e) => setFirstname(e.target.value)}
                     >
                     </Input>
-                    </div>
-                    <div>
                     <Label>Last Name*</Label>
                     <Input 
                     type="text"
@@ -200,9 +193,8 @@ const Register = () => {
                     placeholder="Enter your last name"
                     value={lastname}
                     onChange={(e) => setLastname(e.target.value)}
-                    ></Input>
-                    </div>
-                    <div>
+                    >
+                    </Input>
                     <Label>Phone Number*</Label>
                     <Input 
                     type="text"
@@ -211,9 +203,8 @@ const Register = () => {
                     placeholder="+254 xxx xxxxxx"
                     value={phonenumber}
                     onChange={(e) => setPhonenumber(e.target.value)}
-                    ></Input>
-                    </div>
-                    <div>
+                    >
+                    </Input>
                     <Label>Email*</Label>
                     <Input 
                     type="email"
@@ -222,9 +213,8 @@ const Register = () => {
                     placeholder="example@gmail.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    ></Input>
-                    </div>
-                    <div>
+                    >
+                    </Input>
                     <Label>Password*</Label>
                     <Input 
                     type="password"
@@ -234,9 +224,8 @@ const Register = () => {
                     placeholder="Enter password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    ></Input>
-                    </div>
-                    <div>
+                    >
+                    </Input>
                     <Label>Confirm Password*</Label>
                     <Input 
                     type='password'
@@ -245,8 +234,10 @@ const Register = () => {
                     autoComplete='true'
                     placeholder="Confirm password"
                     value={confirmpassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}></Input>
-                    </div>
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    >
+                    </Input>
+
                     <Action>
                         <Button type="submit">CREATE</Button>
                         <Message>Already have an account? <NavLink to='/login'><b>Log In</b></NavLink></Message>
