@@ -19,7 +19,6 @@ const Container = styled.div`
 const Image = styled.img`
       width: 70%;
 `
-
 const Wrapper = styled.div`
       position: relative;
       padding: 20px;
@@ -42,7 +41,7 @@ const Title = styled.h1`
 `
 
 const Hr = styled.hr`
-      margin: 10px 0px 25px 0px;
+      margin: 10px 0 25px 0;
       justify-content: center;
 `
 
@@ -90,6 +89,9 @@ const Button = styled.button`
       border-radius: 55px;
       font-weight: 700;
       font-size: 24px;
+      &:hover {
+          background-color:#fd7b48;
+        }
 `
 
 const Message = styled.div`
@@ -118,12 +120,6 @@ const Login = () => {
       const [password, setPassword] = useState("");
       const [error, setError] = useState("");
 
-      // useEffect(() => {
-      //       if(localStorage.getItem("authToken")){
-      //             navigate("/");
-      //       }
-      // }, [navigate]);
-
       const loginHandler = async (e) => {
             e.preventDefault();
 
@@ -132,8 +128,6 @@ const Login = () => {
                         "Content-Type": "application/json"
                   },
             };
-
-
 
             try{
                   const { data } = await axios.post(
