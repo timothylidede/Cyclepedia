@@ -45,12 +45,10 @@ const SearchContainer = styled.div`
 
 const Input = styled.input`
     border: none;
-    
 `
 const Center = styled.div`
     flex: 1;
-  text-align: center;
-  
+    text-align: center;
 `
 
 const Logo = styled.h1`
