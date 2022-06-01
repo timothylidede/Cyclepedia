@@ -41,7 +41,7 @@ const Title = styled.h1`
 `
 
 const Hr = styled.hr`
-      margin: 10px 0px 25px 0px;
+      margin: 10px 0 25px 0;
       justify-content: center;
 `
 
@@ -92,7 +92,6 @@ const Button = styled.button`
       &:hover {
           background-color:#fd7b48;
         }
-
 `
 
 const Message = styled.div`
@@ -113,10 +112,6 @@ const Span = styled.span`
       color: red;
       font-weight: bold;
 `
-const InputWrapper = styled.div`
-      display: flex;
-      align-items: center;
-`
 
 const Login = () => {
       let navigate = useNavigate();
@@ -124,12 +119,6 @@ const Login = () => {
       const [email, setEmail] = useState("");
       const [password, setPassword] = useState("");
       const [error, setError] = useState("");
-
-      // useEffect(() => {
-      //       if(localStorage.getItem("authToken")){
-      //             navigate("/");
-      //       }
-      // }, [navigate]);
 
       const loginHandler = async (e) => {
             e.preventDefault();
@@ -139,8 +128,6 @@ const Login = () => {
                         "Content-Type": "application/json"
                   },
             };
-
-
 
             try{
                   const { data } = await axios.post(
@@ -152,7 +139,7 @@ const Login = () => {
                         config
                   );
 
-                  localStorage.setItem("authToken", data.token);
+                  localStorage.setItem("authToken", data.token)
 
                   navigate("/");
             }catch(error){
@@ -190,6 +177,7 @@ const Login = () => {
                     placeholder="password"
                     onChange={(e) => setPassword(e.target.value)}
                     value={password}
+
                     ></Input>
                     <Action>
                         <Button>SIGN IN</Button>

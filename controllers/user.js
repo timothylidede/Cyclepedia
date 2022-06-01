@@ -1,5 +1,6 @@
 const User = require("../models/user");
 const Product = require("../models/product");
+const Order = require("../models/order");
 
 exports.addtocart = (req, res) => {
   User.findOne({ _id: req.user._id }, (err, userInfo) => {
@@ -64,7 +65,35 @@ exports.cartinfo = (req, res) => {
     });
     Product.find({ _id: { $in: array } }).exec((err, productDetails) => {
       if (err) return res.status(400).send(err);
-      return res.status(200).json({ success: true, productDetails, cart });
+      return res.status(200).json({ success: true, cart, productDetails });
     });
   });
+};
+
+exports.completeorder = async (req, res) => {
+  console.log(req.body);
+  try {
+    const order = await Order.create(req.body);
+    const userInfo = await User.findOneAndUpdate(
+      { _id: req.user._id },
+      {
+        $set: { cart: [] },
+      },
+      { new: true }
+    );
+    res.json({ status: "ok", order, userInfo });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error });
+  }
+};
+
+exports.orderhistory = async (req, res) => {
+  try {
+    const orderhistory = await Order.find({ order_by: req.user._id });
+    res.json({ status: "ok", orderhistory });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error });
+  }
 };

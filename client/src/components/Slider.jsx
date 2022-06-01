@@ -67,14 +67,17 @@ const Desc = styled.p`
       letter-spacing: 3px;
 `
 const Button = styled.button`
-      padding: 10px 20px;
-      border: none;
-      font-size: 20px;
+      width: 15rem;
+      padding: 25px;
+      border:none;
+      font-size: 25px;
+      font-weight: 800;
       background-color: teal;
       border-radius: 1em;
+      color:white;
       cursor: pointer;
       &:hover {
-          background-color:#00a86b;
+          background-color:#fd7b48;
         }
 
 `
