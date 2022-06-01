@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { popularProducts } from "../data";
 import Product from "./Product";
-import React from "react";
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 const Container = styled.div`
   padding: 20px;
   display: flex;
@@ -11,9 +11,26 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 const Products = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function getproducts() {
+      axios
+        .get(` http://localhost:5000/api/products/allproducts`)
+        .then((res) => {
+          if (res.data.error) {
+            alert(res.data.error);
+          } else {
+            setProducts(res.data.products);
+          }
+        });
+    }
+    getproducts();
+  }, []);
+
   return (
     <Container>
-      {popularProducts.map((item) => (
+      {products.map((item) => (
         <Product item={item} key={item.id} />
       ))}
     </Container>

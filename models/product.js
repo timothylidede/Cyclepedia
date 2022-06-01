@@ -23,18 +23,10 @@ const Product = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    images: [
-      {
-        public_id: {
-          type: String,
-          required: true,
-        },
-        url: {
-          type: String,
-          required: true,
-        },
-      },
-    ],
+    images: {
+      type: Array,
+      default: [],
+    },
     category: {
       type: String,
       required: [true, "Product category is required"],
@@ -51,8 +43,8 @@ const Product = new mongoose.Schema(
       },
     },
     seller: {
-      type: String,
-      required: [true, "Enter product seller"],
+      type: ObjectId,
+      ref: "User",
     },
     numOfReviews: {
       type: Number,
