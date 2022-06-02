@@ -105,7 +105,6 @@ const ProductAmount = styled.div`
 
 const ProductPrice = styled.div`
   font-size: 30px;
-  font-weight: 200;
 `;
 
 const Summary = styled.div`
@@ -139,6 +138,7 @@ const SummaryButton = styled.button`
   background-color: black;
   color: white;
   font-weight: 600;
+<<<<<<< HEAD
 `;
 
 const Cart = () => {

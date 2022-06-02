@@ -66,6 +66,11 @@ const MenuItem = styled.div`
   margin-left: 25px;
 `;
 
+const Welcome = styled.div`
+  color: #fd7b48;
+  font-size: 18px;
+  font-weight: 600;
+`;
 const Navbar = () => {
   let navigate = useNavigate();
 
