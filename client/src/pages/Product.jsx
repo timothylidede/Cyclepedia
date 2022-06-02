@@ -6,7 +6,7 @@ import Navbar from "../components/Navbar";
 import Announcement from "../components/Announcement";
 import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
-import motorcycle from "../assets/motorcycle.png";
+import { useNavigate } from "react-router-dom";
 import { Add, Remove } from "@mui/icons-material";
 
 const Container = styled.div``;
@@ -81,6 +81,7 @@ const Button = styled.span`
 `;
 
 const Product = (props) => {
+  const navigate = useNavigate();
   const [product, setProduct] = useState({});
   const { productId } = useParams();
 
@@ -98,6 +99,23 @@ const Product = (props) => {
     }
     getproduct(productId);
   }, []);
+
+  const addtocart = () => {
+    axios
+      .get(`http://localhost:5000/api/user/addtocart?productId=${productId}`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.authToken,
+        },
+      })
+      .then((res) => {
+        if (res.data.error) {
+          alert(res.data.error);
+        } else {
+          navigate("/cart");
+        }
+      })
+      .catch((err) => console.log(err));
+  };
 
   const renderProductImage = (images) => {
     if (images && images.length > 0) {
@@ -126,7 +144,7 @@ const Product = (props) => {
               <Amount>1</Amount>
               <Add />
             </AmountContainer>
-            <Button>ADD TO CART</Button>
+            <Button onClick={addtocart}>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
