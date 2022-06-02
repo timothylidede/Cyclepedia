@@ -67,6 +67,11 @@ const MenuItem = styled.div`
     margin-left: 25px;
 `
 
+const Welcome = styled.div`
+  color:#fd7b48;
+  font-size: 18px; 
+  font-weight: 600;
+`
 const Navbar = () => {
 
     let navigate = useNavigate();
@@ -89,8 +94,11 @@ const Navbar = () => {
                 </Left>
                 <Center><a href="/">CYCLEPEDIA.</a></Center>
                 <Right>
-                    {localStorage.getItem("authToken") ? 
-                    <MenuItem><NavLink to="#" onClick={logoutHandler}>SIGN OUT</NavLink></MenuItem>
+                    <MenuItem>
+                        <Welcome>  Welcome, Caren</Welcome>
+                    </MenuItem>
+                    {localStorage.getItem("authToken") ?
+                     <MenuItem><NavLink to="#" onClick={logoutHandler}>SIGN OUT</NavLink></MenuItem>
                     : <MenuItem><NavLink to="/login">SIGN IN</NavLink></MenuItem>}
                     <MenuItem>
                         <Badge badgeContent={4} color="primary">

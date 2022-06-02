@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Navbar from "../components/Navbar";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
-import redharley from "../assets/redmoto.jpeg"
 import {Add, Remove} from "@mui/icons-material";
 
 const Container = styled.div``
@@ -61,10 +60,6 @@ flex: 2;
   display: flex;
 `
 
-const Image = styled.img`
-width: 200px;
-`
-
 const Details = styled.div`
 padding: 20px;
   display: flex;
@@ -97,12 +92,12 @@ display: flex;
 `
 
 const ProductAmount = styled.div`
-font-size: 24px;
+font-size: 18px;
   margin: 5px;
 `
 
 const ProductPrice = styled.div`
-font-size: 30px;
+font-size: 18px;
   font-weight: 200;
 `
 
@@ -138,11 +133,9 @@ width: 100%;
   font-weight: 600;
 `
 
-
-
-
-
-
+const Hr = styled.hr`
+width: 90%;
+`
 const Cart = () => {
     let motorcycle;
     return (
@@ -163,11 +156,9 @@ const Cart = () => {
                     <Info>
                         <Product>
                             <ProductDetail>
-                                <Image src= {redharley} />
                                 <Details>
                                     <ProductName><b>Product:</b> HARLEY-DAVIDSON VINTAGE BIKE</ProductName>
                                     <ProductId><b>ID:</b> 123456789876</ProductId>
-                                    <ProductBrand color="red"/>
                                     <ProductType><b>Type:</b> Vintage Bike</ProductType>
                                 </Details>
                             </ProductDetail>
@@ -181,14 +172,12 @@ const Cart = () => {
                                 <ProductPrice>Ksh 800,000</ProductPrice>
                             </PriceDetail>
                         </Product>
-                        <hr/>
+                        <Hr/>
                         <Product>
                             <ProductDetail>
-                                <Image src= {redharley} />
                                 <Details>
                                     <ProductName><b>Product:</b> HARLEY-DAVIDSON VINTAGE BIKE</ProductName>
                                     <ProductId><b>ID:</b> 123456789876</ProductId>
-                                    <ProductBrand color="red"/>
                                     <ProductType><b>Type:</b> Vintage Bike</ProductType>
                                 </Details>
                             </ProductDetail>
@@ -202,14 +191,12 @@ const Cart = () => {
                                 <ProductPrice>Ksh 800,000</ProductPrice>
                             </PriceDetail>
                         </Product>
-                        <hr/>
+                        <Hr/>
                         <Product>
                             <ProductDetail>
-                                <Image src= {redharley} />
                                 <Details>
                                     <ProductName><b>Product:</b> HARLEY-DAVIDSON VINTAGE BIKE</ProductName>
                                     <ProductId><b>ID:</b> 123456789876</ProductId>
-                                    <ProductBrand color="red"/>
                                     <ProductType><b>Type:</b> Vintage Bike</ProductType>
                                 </Details>
                             </ProductDetail>
@@ -223,14 +210,12 @@ const Cart = () => {
                                 <ProductPrice>Ksh 800,000</ProductPrice>
                             </PriceDetail>
                         </Product>
-                        <hr/>
+                        <Hr/>
                         <Product>
                             <ProductDetail>
-                                <Image src= {redharley} />
                                 <Details>
                                     <ProductName><b>Product:</b> HARLEY-DAVIDSON VINTAGE BIKE</ProductName>
                                     <ProductId><b>ID:</b> 123456789876</ProductId>
-                                    <ProductBrand color="red"/>
                                     <ProductType><b>Type:</b> Vintage Bike</ProductType>
                                 </Details>
                             </ProductDetail>
