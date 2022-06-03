@@ -87,15 +87,17 @@ const Navbar = () => {
                         <Search style={{color:"gray", fontSize: 16}}/>
                     </SearchContainer>
                 </Left>
-                <Center><a href="/">CYCLEPEDIA.</a></Center>
+                <Center><Link to="/">CYCLEPEDIA.</Link></Center>
                 <Right>
                     {localStorage.getItem("authToken") ? 
                     <MenuItem><NavLink to="#" onClick={logoutHandler}>SIGN OUT</NavLink></MenuItem>
                     : <MenuItem><NavLink to="/login">SIGN IN</NavLink></MenuItem>}
                     <MenuItem>
-                        <Badge badgeContent={4} color="primary">
-                            <ShoppingCartOutlined color="action" />
-                        </Badge>
+                        <NavLink to="/cart">
+                            <Badge badgeContent={4} color="primary">
+                                <ShoppingCartOutlined color="action" />
+                            </Badge>
+                        </NavLink>
                     </MenuItem>
 
                 </Right>

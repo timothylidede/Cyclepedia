@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {Facebook, Instagram, MailOutline, PaymentsTwoTone, Phone, Pinterest, Room, Twitter} from "@mui/icons-material";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
     display: flex;
@@ -34,6 +35,11 @@ width: 40px;
   margin-right: 20px;
 `
 
+const FooterLink = styled(Link)`
+    text-decoration: none;
+    cursor: pointer;
+    font-family: "Roboto Thin", sans-serif;
+`
 
 const Center = styled.div`
     flex: 1;
@@ -76,7 +82,7 @@ const Footer = () => {
     return (
         <Container>
             <Left>
-                <Logo>CYCLEPEDIA.</Logo>
+                <FooterLink to="/"><Logo>CYCLEPEDIA.</Logo></FooterLink>
                 <Desc>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aut autem commodi debitis doloremque eum, ex, in iure iusto laudantium minima necessitatibus porro quasi qui tenetur ut, veniam vero voluptas!</Desc>
                 <SocialContainer>
                     <SocialIcon color="3b5999">
@@ -97,7 +103,7 @@ const Footer = () => {
             <Center>
                 <Title>Useful Links</Title>
                 <List>
-                    <ListItem>Home</ListItem>
+                    <Link to="/"><ListItem>Home</ListItem></Link>
                     <ListItem>Cart</ListItem>
                     <ListItem>Vintage Motorcycles</ListItem>
                     <ListItem>MotorSport</ListItem>
@@ -113,7 +119,7 @@ const Footer = () => {
                 <Title>Contact</Title>
                 <ContactItem><Room style={{marginRight:"10px"}}/>622 Ole Sangale, Madaraka Estate 90087</ContactItem>
                 <ContactItem><Phone style={{marginRight:"10px"}}/>+254 YOU WILDIN'</ContactItem>
-                <ContactItem><MailOutline style={{marginRight:"10px"}}/>catchme@gmail.com</ContactItem>
+                <ContactItem><MailOutline style={{marginRight:"10px"}}/>cyclepedia.help@gmail.com</ContactItem>
                 <Payment src="https://i.ibb.co/Qfvn4z6/payment.png"/>
 
             </Right>
