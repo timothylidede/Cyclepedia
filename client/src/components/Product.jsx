@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import axios from "axios";
 import {
   FavoriteBorderOutlined,
   SearchOutlined,
@@ -53,7 +54,7 @@ const Image = styled.img`
   z-index: 2;
 `;
 
-const Icon = styled.div`
+const Icon = styled.button`
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -63,7 +64,7 @@ const Icon = styled.div`
   justify-content: center;
   margin: 10px;
   transition: all 0.5s ease;
-
+  border: 0;
   &:hover {
     background-color: #e9f5f5;
     transform: scale(1.1);
@@ -71,12 +72,31 @@ const Icon = styled.div`
 `;
 
 const Product = ({ item }) => {
+  const navigate = useNavigate();
+
+  const addtocart = () => {
+    axios
+      .get(`http://localhost:5000/api/user/addtocart?productId=${item._id}`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.authToken,
+        },
+      })
+      .then((res) => {
+        if (res.data.error) {
+          alert(res.data.error);
+        } else {
+          navigate("/cart");
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <Container>
       <Circle />
       <Image src={item.images[0]} />
       <Info>
-        <Icon>
+        <Icon onClick={addtocart}>
           <ShoppingCartOutlined />
         </Icon>
         <Icon>
