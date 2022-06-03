@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {Facebook, Instagram, MailOutline, PaymentsTwoTone, Phone, Pinterest, Room, Twitter} from "@mui/icons-material";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
     display: flex;
@@ -34,7 +35,6 @@ width: 40px;
   margin-right: 20px;
 `
 
-
 const Center = styled.div`
     flex: 1;
   padding: 20px;
@@ -53,10 +53,14 @@ margin: 0;
 `
 
 const ListItem = styled.li`
-width: 50%;
-  margin-bottom: 10px;
+    width: 50%;
+    margin-bottom: 10px;
 `
-
+const FooterLink = styled(Link)`
+    font-weight: normal;
+    color: black;
+    font-size: 1rem;
+`
 const Right = styled.div`
     flex: 1;
   padding: 20px;
@@ -76,7 +80,7 @@ const Footer = () => {
     return (
         <Container>
             <Left>
-                <Logo>CYCLEPEDIA.</Logo>
+                <Link to="/"><Logo>CYCLEPEDIA.</Logo></Link>
                 <Desc>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aut autem commodi debitis doloremque eum, ex, in iure iusto laudantium minima necessitatibus porro quasi qui tenetur ut, veniam vero voluptas!</Desc>
                 <SocialContainer>
                     <SocialIcon color="3b5999">
@@ -97,8 +101,8 @@ const Footer = () => {
             <Center>
                 <Title>Useful Links</Title>
                 <List>
-                    <ListItem>Home</ListItem>
-                    <ListItem>Cart</ListItem>
+                    <ListItem><FooterLink to="/">Home</FooterLink></ListItem>
+                    <ListItem><FooterLink to="/cart">Cart</FooterLink></ListItem>
                     <ListItem>Vintage Motorcycles</ListItem>
                     <ListItem>MotorSport</ListItem>
                     <ListItem>Accessories</ListItem>
@@ -113,7 +117,7 @@ const Footer = () => {
                 <Title>Contact</Title>
                 <ContactItem><Room style={{marginRight:"10px"}}/>622 Ole Sangale, Madaraka Estate 90087</ContactItem>
                 <ContactItem><Phone style={{marginRight:"10px"}}/>+254 YOU WILDIN'</ContactItem>
-                <ContactItem><MailOutline style={{marginRight:"10px"}}/>catchme@gmail.com</ContactItem>
+                <ContactItem><MailOutline style={{marginRight:"10px"}}/>cyclepedia.help@gmail.com</ContactItem>
                 <Payment src="https://i.ibb.co/Qfvn4z6/payment.png"/>
 
             </Right>

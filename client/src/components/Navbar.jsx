@@ -90,7 +90,7 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <a href="/">CYCLEPEDIA.</a>
+          <Link to="/">CYCLEPEDIA.</Link>
         </Center>
         <Right>
           {localStorage.getItem("authToken") ? (
