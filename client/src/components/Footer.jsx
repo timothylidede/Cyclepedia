@@ -35,12 +35,6 @@ width: 40px;
   margin-right: 20px;
 `
 
-const FooterLink = styled(Link)`
-    text-decoration: none;
-    cursor: pointer;
-    font-family: "Roboto Thin", sans-serif;
-`
-
 const Center = styled.div`
     flex: 1;
   padding: 20px;
@@ -59,10 +53,14 @@ margin: 0;
 `
 
 const ListItem = styled.li`
-width: 50%;
-  margin-bottom: 10px;
+    width: 50%;
+    margin-bottom: 10px;
 `
-
+const FooterLink = styled(Link)`
+    font-weight: normal;
+    color: black;
+    font-size: 1rem;
+`
 const Right = styled.div`
     flex: 1;
   padding: 20px;
@@ -82,7 +80,7 @@ const Footer = () => {
     return (
         <Container>
             <Left>
-                <FooterLink to="/"><Logo>CYCLEPEDIA.</Logo></FooterLink>
+                <Link to="/"><Logo>CYCLEPEDIA.</Logo></Link>
                 <Desc>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aut autem commodi debitis doloremque eum, ex, in iure iusto laudantium minima necessitatibus porro quasi qui tenetur ut, veniam vero voluptas!</Desc>
                 <SocialContainer>
                     <SocialIcon color="3b5999">
@@ -103,8 +101,8 @@ const Footer = () => {
             <Center>
                 <Title>Useful Links</Title>
                 <List>
-                    <Link to="/"><ListItem>Home</ListItem></Link>
-                    <ListItem>Cart</ListItem>
+                    <ListItem><FooterLink to="/">Home</FooterLink></ListItem>
+                    <ListItem><FooterLink to="/cart">Cart</FooterLink></ListItem>
                     <ListItem>Vintage Motorcycles</ListItem>
                     <ListItem>MotorSport</ListItem>
                     <ListItem>Accessories</ListItem>
