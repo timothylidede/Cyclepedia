@@ -16,6 +16,8 @@ app.use("/api/auth", require("./routes/auth"));
 app.use("/api/private", require("./routes/private"));
 app.use("/api/products", require("./routes/product"));
 app.use("/api/user", require("./routes/user"));
+app.use("/api/payment", require("./routes/payments"));
+
 
 //Error Handler (should be last middleware)
 app.use(errorHandler);
