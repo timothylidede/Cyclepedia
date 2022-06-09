@@ -24,7 +24,7 @@ const SocialContainer = styled.div`
 display: flex`
 
 const SocialIcon = styled.div`
-width: 40px;
+  width: 40px;
   height: 40px;
   border-radius: 50%;
   color: white;
@@ -37,19 +37,19 @@ width: 40px;
 
 const Center = styled.div`
     flex: 1;
-  padding: 20px;
+    padding: 20px;
   
 `
 const Title = styled.h3`
-margin-bottom: 30px;
+    margin-bottom: 30px;
 `
 
 const List = styled.ul`
-margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
 `
 
 const ListItem = styled.li`
