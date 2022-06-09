@@ -95,6 +95,7 @@ const Navbar = () => {
         <Right>
           {localStorage.getItem("authToken") ? (
             <MenuItem>
+              <Welcome>Welcome Caren</Welcome>
               <NavLink to="#" onClick={logoutHandler}>
                 SIGN OUT
               </NavLink>
