@@ -30,7 +30,7 @@ const NavLink = styled(Link)`
   font-size: 15px;
   text-decoration: none;
   cursor: pointer;
-  color: teal;
+  color: black;
   font-family: "Roboto Thin", sans-serif;
 `;
 
@@ -71,6 +71,7 @@ const Welcome = styled.div`
   font-size: 18px;
   font-weight: 600;
 `;
+
 const Navbar = () => {
   let navigate = useNavigate();
 
@@ -90,7 +91,7 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Link to="/">CYCLEPEDIA.</Link>
+          <Logo><Link to="/">CYCLEPEDIA.</Link></Logo>
         </Center>
         <Right>
           {localStorage.getItem("authToken") ? (

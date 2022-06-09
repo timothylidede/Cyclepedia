@@ -138,7 +138,6 @@ const SummaryButton = styled.button`
   background-color: black;
   color: white;
   font-weight: 600;
-<<<<<<< HEAD
 `;
 
 const Cart = () => {
