@@ -19,7 +19,10 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* Use PrivateRoute for routes to pages you want accessed only by logged in users */}
-        {/* <PrivateRoute path="/" component={component} /> */}
+        {/* <Route exact path="/cart" element={ <PrivateRoute/> } >
+          <Route exact path='/cart' element={ <Cart/> } />
+        </Route> */}
+        {/* How private route should look */}
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Register />} />
         <Route path="/" element={<Home />} />
