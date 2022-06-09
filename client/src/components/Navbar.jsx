@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState, useEffect } from "react";
+import axios from "axios"
 import styled from "styled-components";
 import { Search, ShoppingCartOutlined } from "@mui/icons-material";
 import { Badge } from "@mui/material";
@@ -74,10 +75,40 @@ const Welcome = styled.div`
 const Navbar = () => {
   let navigate = useNavigate();
 
+  const [cartCount, setCartCount] = useState([]);
+
+  useEffect(() => {
+    async function getcartItems() {
+      axios
+        .get(`http://localhost:5000/api/user/cartinfo`, {
+          headers: {
+            Authorization: "Bearer " + localStorage.authToken,
+          },
+        })
+        .then((res) => {
+          if (res.data.error) {
+            alert(res.data.error);
+          } else {
+            let count = res.data.cart;
+            setCartCount(count.length());
+          }
+        });
+    }
+    getcartItems();
+  }, []);
+
+
   const logoutHandler = () => {
     localStorage.removeItem("authToken");
     navigate("/");
   };
+
+  let cart;
+  if(cartCount == undefined){
+    cart = <Badge badgeContent={cartCount} color="primary"> <ShoppingCartOutlined color="action" /></Badge>
+  }else{
+    cart = <ShoppingCartOutlined color="action" />
+  }
 
   return (
     <Container>
@@ -106,9 +137,7 @@ const Navbar = () => {
           )}
           <MenuItem>
             <Link to="/cart">
-              <Badge badgeContent={4} color="primary">
-                <ShoppingCartOutlined color="action" />
-              </Badge>
+              {cart}
             </Link>
           </MenuItem>
         </Right>

@@ -41,6 +41,9 @@ const Container = styled.div`
     opacity: 1;
   }
 `;
+const TextContainer = styled.div`
+ display: block;
+`
 const Circle = styled.div`
   width: 200px;
   height: 200px;
@@ -71,6 +74,10 @@ const Icon = styled.button`
   }
 `;
 
+const Text = styled.p`
+  text-align: left;
+`
+
 const Product = ({ item }) => {
   const navigate = useNavigate();
 
@@ -92,6 +99,7 @@ const Product = ({ item }) => {
   };
 
   return (
+    <>
     <Container>
       <Circle />
       <Image src={item.images[0]} />
@@ -109,6 +117,11 @@ const Product = ({ item }) => {
         </Icon>
       </Info>
     </Container>
+    <TextContainer>
+    <Text>{item.product_name}</Text>
+    <Text>{item.price}</Text>
+    </TextContainer>
+    </>
   );
 };
 

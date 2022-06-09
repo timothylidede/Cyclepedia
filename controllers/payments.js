@@ -49,7 +49,7 @@ exports.lipanampesa = async (req, res, next) => {
 
 exports.cardPayment = async (req, res, next) => {
     const { card_number, cvv, expiry_month, expiry_year, amount} = req.body;
-    const { email, phone_number, fullname } = req.user;
+    const { email, phonenumber, fullname } = req.user;
     const payload = {
         "card_number": card_number,
         "cvv": cvv,
@@ -87,7 +87,6 @@ exports.cardPayment = async (req, res, next) => {
 
         }
         if (response.meta.authorization.mode === 'redirect') {
-
             // var url = response.meta.authorization.redirect
             // open(url)
         }
