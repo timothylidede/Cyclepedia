@@ -23,10 +23,16 @@ const Info = styled.div`
   transition: all 0.5s ease;
   cursor: pointer;
 `;
-
 const Container = styled.div`
+  width: 23%;
+  margin: 5px;
+  &:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+`
+const ProductContainer = styled.div`
   flex: 1;
-  width: 90%;
+  width: 97%;
   flex-basis: 20%;
   margin: 5px;
   min-width: 280px;
@@ -41,6 +47,11 @@ const Container = styled.div`
     opacity: 1;
   }
 `;
+const TextContainer = styled.div`
+  width: 90%;
+  padding: 0 0 0 0.2rem;
+  margin: 5px;
+`
 const Circle = styled.div`
   width: 200px;
   height: 200px;
@@ -71,6 +82,14 @@ const Icon = styled.button`
   }
 `;
 
+const Text = styled.p`
+  text-align: left;
+  font-size: 20px;
+`
+const Price = styled.p`
+  font-weight: bold;
+`
+
 const Product = ({ item }) => {
   const navigate = useNavigate();
 
@@ -93,6 +112,7 @@ const Product = ({ item }) => {
 
   return (
     <Container>
+    <ProductContainer>
       <Circle />
       <Image src={item.images[0]} />
       <Info>
@@ -108,6 +128,11 @@ const Product = ({ item }) => {
           <FavoriteBorderOutlined />
         </Icon>
       </Info>
+    </ProductContainer>
+    <TextContainer>
+    <Text>{item.product_name}</Text>
+    <Text><Price>{`Ksh ${item.price}`}</Price></Text>
+    </TextContainer>
     </Container>
   );
 };

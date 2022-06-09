@@ -22,7 +22,7 @@ exports.protect = async (req, res, next) => {
             return next(new ErrorResponse("No user found with this id", 404));
         }
 
-        req.user =user;
+        req.user = user;
         
         next();
     }catch(error){

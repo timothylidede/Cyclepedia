@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState, useEffect } from "react";
+import axios from "axios"
 import styled from "styled-components";
 import { Search, ShoppingCartOutlined } from "@mui/icons-material";
 import { Badge } from "@mui/material";
@@ -70,15 +71,51 @@ const Welcome = styled.div`
   color: #fd7b48;
   font-size: 18px;
   font-weight: 600;
+  display: inline;
+  margin: 0 2rem 0 0;
 `;
 
 const Navbar = () => {
   let navigate = useNavigate();
 
+  const [cartCount, setCartCount] = useState();
+  const[ username, setUsername]= useState();
+
+  useEffect(() => {
+    async function getcartItems() {
+      axios
+        .get(`http://localhost:5000/api/user/cartinfo`, {
+          headers: {
+            Authorization: "Bearer " + localStorage.authToken,
+          },
+        })
+        .then((res) => {
+          if (res.data.error) {
+            alert(res.data.error);
+          } else {
+            let count = res.data.cart;
+            setCartCount(count.length);
+            console.log(count.length);
+            console.log(res.data.name);
+            setUsername(res.data.name);
+          }
+        });
+    }
+    getcartItems();
+  }, []);
+
+
   const logoutHandler = () => {
     localStorage.removeItem("authToken");
     navigate("/");
   };
+
+  let cart;
+  if(cartCount == undefined){
+    cart = <Badge badgeContent={cartCount} color="primary"> <ShoppingCartOutlined color="action" /></Badge>
+  }else{
+    cart = <ShoppingCartOutlined color="action" />
+  }
 
   return (
     <Container>
@@ -96,7 +133,7 @@ const Navbar = () => {
         <Right>
           {localStorage.getItem("authToken") ? (
             <MenuItem>
-              <Welcome>Welcome Caren</Welcome>
+              <Welcome>Welcome {username}</Welcome>
               <NavLink to="#" onClick={logoutHandler}>
                 SIGN OUT
               </NavLink>
@@ -108,9 +145,7 @@ const Navbar = () => {
           )}
           <MenuItem>
             <Link to="/cart">
-              <Badge badgeContent={4} color="primary">
-                <ShoppingCartOutlined color="action" />
-              </Badge>
+              {cart}
             </Link>
           </MenuItem>
         </Right>
