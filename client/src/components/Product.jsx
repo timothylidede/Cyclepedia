@@ -7,6 +7,8 @@ import {
 } from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
 import React from "react";
+import { toast, ToastContainer} from 'react-toastify/dist/react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Info = styled.div`
   opacity: 0;
@@ -104,7 +106,15 @@ const Product = ({ item }) => {
         if (res.data.error) {
           alert(res.data.error);
         } else {
-          navigate("/cart");
+          toast.success('Added to cart successfully', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
         }
       })
       .catch((err) => console.log(err));
@@ -112,6 +122,18 @@ const Product = ({ item }) => {
 
   return (
     <Container>
+      <ToastContainer 
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     <ProductContainer>
       <Circle />
       <Image src={item.images[0]} />
