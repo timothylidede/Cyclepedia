@@ -58,6 +58,9 @@ exports.removefromcart = (req, res) => {
 };
 
 exports.cartinfo = (req, res) => {
+  const { fullname } = req.user
+  const name = fullname.split(" ")[0];
+
   User.findOne({ _id: req.user._id }, (err, userInfo) => {
     let cart = userInfo.cart;
     let array = cart.map((item) => {
@@ -65,7 +68,7 @@ exports.cartinfo = (req, res) => {
     });
     Product.find({ _id: { $in: array } }).exec((err, productDetails) => {
       if (err) return res.status(400).send(err);
-      return res.status(200).json({ success: true, cart, productDetails });
+      return res.status(200).json({ success: true, cart, productDetails, name});
     });
   });
 };

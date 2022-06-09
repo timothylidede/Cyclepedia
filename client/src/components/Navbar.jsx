@@ -71,11 +71,14 @@ const Welcome = styled.div`
   color: #fd7b48;
   font-size: 18px;
   font-weight: 600;
+  display: inline;
+  margin: 0 2rem 0 0;
 `;
 const Navbar = () => {
   let navigate = useNavigate();
 
-  const [cartCount, setCartCount] = useState([]);
+  const [cartCount, setCartCount] = useState();
+  const[ username, setUsername]= useState();
 
   useEffect(() => {
     async function getcartItems() {
@@ -90,7 +93,10 @@ const Navbar = () => {
             alert(res.data.error);
           } else {
             let count = res.data.cart;
-            setCartCount(count.length());
+            setCartCount(count.length);
+            console.log(count.length);
+            console.log(res.data.name);
+            setUsername(res.data.name);
           }
         });
     }
@@ -126,7 +132,7 @@ const Navbar = () => {
         <Right>
           {localStorage.getItem("authToken") ? (
             <MenuItem>
-              <Welcome>Welcome Caren</Welcome>
+              <Welcome>Welcome {username}</Welcome>
               <NavLink to="#" onClick={logoutHandler}>
                 SIGN OUT
               </NavLink>
