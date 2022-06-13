@@ -28,10 +28,19 @@ const Language = styled.span`
 
 const NavLink = styled(Link)`
   margin: 5px 0;
-  font-size: 15px;
+  font-size: 1 rem;
   text-decoration: none;
   cursor: pointer;
   color: black;
+  font-family: "Roboto Thin", sans-serif;
+`;
+
+const Links = styled(Link)`
+  margin: 5px 0;
+  font-size: 18px;
+  text-decoration: none;
+  cursor: pointer;
+  color: teal;
   font-family: "Roboto Thin", sans-serif;
 `;
 
@@ -128,19 +137,19 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo><Link to="/">CYCLEPEDIA.</Link></Logo>
+          <Logo><NavLink to="/">CYCLEPEDIA.</NavLink></Logo>
         </Center>
         <Right>
           {localStorage.getItem("authToken") ? (
             <MenuItem>
               <Welcome>Welcome {username}</Welcome>
-              <NavLink to="#" onClick={logoutHandler}>
+              <Links to="#" onClick={logoutHandler}>
                 SIGN OUT
-              </NavLink>
+              </Links>
             </MenuItem>
           ) : (
             <MenuItem>
-              <NavLink to="/login">SIGN IN</NavLink>
+              <Links to="/login">SIGN IN</Links>
             </MenuItem>
           )}
           <MenuItem>

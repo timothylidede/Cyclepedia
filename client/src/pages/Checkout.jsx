@@ -1,7 +1,7 @@
+import React from 'react';
 import styled from 'styled-components';
 import Navbar from "../components/Navbar";
 import Announcement from "../components/Announcement";
-import {RadioButtonChecked} from "@mui/icons-material";
 
 const Container = styled.div`
 `
