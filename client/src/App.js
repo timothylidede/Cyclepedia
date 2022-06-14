@@ -12,7 +12,8 @@ import Cart from "./pages/Cart";
 import Product from "./pages/Product";
 import ProductList from "./pages/ProductList";
 import Checkout from "./pages/Checkout";
-// import Checkout from "./pages/OrderSummary";
+import OrderSummary from "./pages/OrderSummary";
+
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route exact path='checkout' element={ <Checkout/> } />
         </Route>
         {/* <Route path="checkout" element={<OrderSummary />} /> */}
+        <Route path="ordersummary" element={<OrderSummary />} />
       </Routes>
     </BrowserRouter>
   );

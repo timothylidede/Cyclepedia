@@ -57,7 +57,7 @@ const ListItem = styled.li`
     margin-bottom: 10px;
 `
 const FooterLink = styled(Link)`
-    font-weight: normal;
+    //font-weight: normal;
     color: black;
     font-size: 1rem;
 `
@@ -80,7 +80,7 @@ const Footer = () => {
     return (
         <Container>
             <Left>
-                <Link to="/"><Logo>CYCLEPEDIA.</Logo></Link>
+                <FooterLink to="/"><Logo>CYCLEPEDIA.</Logo></FooterLink>
                 <Desc>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aut autem commodi debitis doloremque eum, ex, in iure iusto laudantium minima necessitatibus porro quasi qui tenetur ut, veniam vero voluptas!</Desc>
                 <SocialContainer>
                     <SocialIcon color="3b5999">
