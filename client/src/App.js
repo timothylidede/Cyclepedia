@@ -14,13 +14,14 @@ import ProductList from "./pages/ProductList";
 import Checkout from "./pages/Checkout";
 import OrderSummary from "./pages/OrderSummary";
 
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         {/* Use PrivateRoute for routes to pages you want accessed only by logged in users */}
-        {/* <Route exact path="/cart" element={ <PrivateRoute/> } >
-          <Route exact path='/cart' element={ <Cart/> } />
+        {/* <Route exact path="/something" element={ <PrivateRoute/> } >
+          <Route exact path='/something' element={ <Cart/> } />
         </Route> */}
         {/* How private route should look */}
         <Route path="login" element={<Login />} />
@@ -29,10 +30,11 @@ function App() {
         <Route path="cart" element={<Cart />} />
         <Route path="product/:productId" element={<Product />} />
         <Route path="products" element={<ProductList />} />
-        <Route path="checkout" element={<Checkout />} />
+        <Route exact path="checkout" element={ <PrivateRoute/> } >
+          <Route exact path='checkout' element={ <Checkout/> } />
+        </Route>
+        {/* <Route path="checkout" element={<OrderSummary />} /> */}
         <Route path="ordersummary" element={<OrderSummary />} />
-
-        {/*<Route path="checkout" element={<OrderSummary.jsx />} />*/}
       </Routes>
     </BrowserRouter>
   );
