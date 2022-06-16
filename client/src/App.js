@@ -11,6 +11,12 @@ import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Product from "./pages/Product";
 import ProductList from "./pages/ProductList";
+import AdminHome from "./components/AdminDashboard/AdminHome";
+import Users from "./components/AdminDashboard/Users";
+import Products from "./components/AdminDashboard/Products";
+import Payments from "./components/AdminDashboard/Payments";
+import Orders from "./components/AdminDashboard/Orders";
+
 
 function App() {
   return (
@@ -24,6 +30,13 @@ function App() {
         <Route path="cart" element={<Cart />} />
         <Route path="product/:productId" element={<Product />} />
         <Route path="products" element={<ProductList />} />
+        <Route path="admin" element={<AdminHome />} />
+        <Route path="admin/products" element={<AdminHome content={<Products />} />} />
+        <Route path="admin/users" element={<AdminHome content={<Users />} />} />
+        <Route path="admin/orders" element={<AdminHome content={<Orders />} />} />
+        <Route path="admin/payments" element={<AdminHome content={<Payments />} />} />
+
+
       </Routes>
     </BrowserRouter>
   );
