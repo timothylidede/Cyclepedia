@@ -138,7 +138,6 @@ const SummaryButton = styled.button`
   background-color: black;
   color: white;
   font-weight: 600;
-<<<<<<< HEAD
 `;
 
 const Cart = () => {
@@ -177,6 +176,21 @@ const Cart = () => {
       return image;
     }
   };
+
+  const getSubtotal = (productDetails, cartItems) => {
+    let subtotal = 0;
+
+    for (let i = 0; i < productDetails.length; i++) {
+      const cost = cartItems[i].quantity * productDetails[i].price;
+      subtotal += cost;
+    }
+    return subtotal;
+  };
+
+  const subtotal = getSubtotal(productDetails, cartItems);
+  const deliveryfee = 500000;
+  const discount = 100000;
+  const total = subtotal + deliveryfee - discount;
 
   return (
     <Container>
@@ -232,19 +246,19 @@ const Cart = () => {
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>Ksh 3,200,000</SummaryItemPrice>
+              <SummaryItemPrice>Ksh {subtotal}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Estimated Delivery Fee</SummaryItemText>
-              <SummaryItemPrice>Ksh 500,000</SummaryItemPrice>
+              <SummaryItemPrice>Ksh {deliveryfee}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Delivery Discount</SummaryItemText>
-              <SummaryItemPrice>Ksh 100,000</SummaryItemPrice>
+              <SummaryItemPrice>Ksh {discount}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>Ksh 3,600,000</SummaryItemPrice>
+              <SummaryItemPrice>Ksh {total}</SummaryItemPrice>
             </SummaryItem>
 
             <SummaryButton>CHECKOUT NOW</SummaryButton>

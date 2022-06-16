@@ -5,6 +5,8 @@ import axios from "axios"
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import React from 'react';
+import { toast, ToastContainer} from 'react-toastify/dist/react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Container = styled.div`
   width: 100vw;
@@ -159,6 +161,15 @@ const Register = () => {
             );
 
             navigate("/login");
+            toast.success('Successfully registerd!', {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              });
         }catch(error){
             setError(error.response.data.error);
             setTimeout(() => {
@@ -170,7 +181,7 @@ const Register = () => {
 
     return (
         <Container>
-            <Image src={logo}/>
+          <Image src={logo}/>
             <Wrapper>
                 <Title>Create Account</Title>
                 {error && <Span className="error-message">{error}</Span>}

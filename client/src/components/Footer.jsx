@@ -24,7 +24,7 @@ const SocialContainer = styled.div`
 display: flex`
 
 const SocialIcon = styled.div`
-width: 40px;
+  width: 40px;
   height: 40px;
   border-radius: 50%;
   color: white;
@@ -37,19 +37,19 @@ width: 40px;
 
 const Center = styled.div`
     flex: 1;
-  padding: 20px;
+    padding: 20px;
   
 `
 const Title = styled.h3`
-margin-bottom: 30px;
+    margin-bottom: 30px;
 `
 
 const List = styled.ul`
-margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
 `
 
 const ListItem = styled.li`
@@ -57,7 +57,7 @@ const ListItem = styled.li`
     margin-bottom: 10px;
 `
 const FooterLink = styled(Link)`
-    font-weight: normal;
+    //font-weight: normal;
     color: black;
     font-size: 1rem;
 `
@@ -80,7 +80,7 @@ const Footer = () => {
     return (
         <Container>
             <Left>
-                <Link to="/"><Logo>CYCLEPEDIA.</Logo></Link>
+                <FooterLink to="/"><Logo>CYCLEPEDIA.</Logo></FooterLink>
                 <Desc>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aut autem commodi debitis doloremque eum, ex, in iure iusto laudantium minima necessitatibus porro quasi qui tenetur ut, veniam vero voluptas!</Desc>
                 <SocialContainer>
                     <SocialIcon color="3b5999">
