@@ -231,15 +231,11 @@ const Cart = () => {
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>Ksh 3,200,000</SummaryItemPrice>
+              <SummaryItemPrice></SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Estimated Delivery Fee</SummaryItemText>
-              <SummaryItemPrice>Ksh 500,000</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Delivery Discount</SummaryItemText>
-              <SummaryItemPrice>Ksh 100,000</SummaryItemPrice>
+              <SummaryItemPrice>Ksh 500</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
