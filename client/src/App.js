@@ -13,6 +13,7 @@ import Product from "./pages/Product";
 import ProductList from "./pages/ProductList";
 import Checkout from "./pages/Checkout";
 import OrderSummary from "./pages/OrderSummary";
+import RegisterSeller from "./pages/Authentication/RegisterSeller";
 
 
 function App() {
@@ -30,9 +31,9 @@ function App() {
         <Route path="cart" element={<Cart />} />
         <Route path="product/:productId" element={<Product />} />
         <Route path="products" element={<ProductList />} />
-       
-          <Route exact path='checkout' element={ <Checkout/> } />
-        {/* </Route> */}
+        <Route exact path="checkout" element={ <PrivateRoute/> } >
+          <Route exact path="checkout" element={<Checkout/>}/>
+        </Route>
         <Route path="ordersummary" element={<OrderSummary />} />
       </Routes>
     </BrowserRouter>
