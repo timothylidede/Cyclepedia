@@ -161,9 +161,19 @@ const CardButton = styled.button`
   transition: 0.5;
 `;
 
+const RemoveButton = styled.button`
+  width: 100px;
+  padding: 10px;
+  background-color: #3293a8;
+  border: none;
+  margin-top: 10px;
+  color: white;
+  font-weight: 600;
+  transition: 0.5;
+`;
+
 const Cart = () => {
   const navigate = useNavigate();
-
   const [cartItems, setCartItems] = useState([]);
   const [productDetails, setProductDetails] = useState([]);
   const [isActive, setActive] = useState(false);
@@ -213,6 +223,51 @@ const Cart = () => {
     setActive(true);
   };
 
+  const addtocart = (e, productId) => {
+    e.preventDefault();
+    axios
+      .get(`http://localhost:5000/api/user/addtocart?productId=${productId}`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.authToken,
+        },
+      })
+      .then(() => {
+        window.location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const reducecart = (e, productId) => {
+    e.preventDefault();
+    axios
+      .get(`http://localhost:5000/api/user/reducecart?productId=${productId}`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.authToken,
+        },
+      })
+      .then(() => {
+        window.location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const removefromcart = (e, productId) => {
+    e.preventDefault();
+    axios
+      .get(
+        `http://localhost:5000/api/user/removefromcart?productId=${productId}`,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.authToken,
+          },
+        }
+      )
+      .then(() => {
+        window.location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
+
   const subtotal = getSubtotal(productDetails, cartItems);
   const deliveryfee = 500000;
   const discount = 100000;
@@ -249,13 +304,24 @@ const Cart = () => {
                       <ProductType>
                         <b>Type:</b> {item.category}
                       </ProductType>
+                      <RemoveButton
+                        onClick={(e) => removefromcart(e, item._id)}
+                      >
+                        Remove
+                      </RemoveButton>
                     </Details>
                   </ProductDetail>
                   <PriceDetail>
                     <ProductAmountContainer>
-                      <Remove />
+                      {cartItems[index].quantity > 1 ? (
+                        <button onClick={(e) => reducecart(e, item._id)}>
+                          <Remove />
+                        </button>
+                      ) : null}
                       <ProductAmount>{cartItems[index].quantity}</ProductAmount>
-                      <Add />
+                      <button onClick={(e) => addtocart(e, item._id)}>
+                        <Add />
+                      </button>
                     </ProductAmountContainer>
 
                     <ProductPrice>
