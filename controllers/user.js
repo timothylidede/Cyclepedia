@@ -71,7 +71,7 @@ exports.cartinfo = (req, res) => {
     
     Product.find({ _id: { $in: array } }).exec((err, productDetails) => {
       if (err) return res.status(400).send(err);
-      return res.status(200).json({ success: true, cart, productDetails, name, total});
+      return res.status(200).json({ success: true, cart, productDetails, name});
     });
   });
 };

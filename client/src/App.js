@@ -18,7 +18,8 @@ import Products from "./components/AdminDashboard/Products";
 import Payments from "./components/AdminDashboard/Payments";
 import Orders from "./components/AdminDashboard/Orders";
 
-import Checkout from "./pages/Checkout";
+import CheckoutCard from "./pages/CheckoutCard";
+import CheckoutMpesa from "./pages/CheckoutMpesa";
 import OrderSummary from "./pages/OrderSummary";
 import RegisterSeller from "./pages/Authentication/RegisterSeller";
 
@@ -49,9 +50,11 @@ function App() {
 
         <Route path="registerseller" element={<RegisterSeller />} />
 
-        <Route exact path="checkout" element={ <PrivateRoute/> } >
-          <Route exact path="checkout" element={<Checkout/>}/>
-        </Route>
+        {/* <Route exact path="checkout" element={ <PrivateRoute/> } > */}
+          <Route exact path="checkout-card" element={<CheckoutCard/>}/>
+          <Route exact path="checkout-mpesa" element={<CheckoutMpesa/>}/>
+
+        {/* </Route> */}
         <Route path="ordersummary" element={<OrderSummary />} />
 
       </Routes>
