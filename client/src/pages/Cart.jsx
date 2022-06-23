@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Add, Remove } from "@mui/icons-material";
 
 const Container = styled.div``;
@@ -260,8 +260,9 @@ const Cart = () => {
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>Ksh {total}</SummaryItemPrice>
             </SummaryItem>
-
-            <SummaryButton>CHECKOUT NOW</SummaryButton>
+            <Link to="/ordersummary">
+              <SummaryButton>CHECKOUT NOW</SummaryButton>
+            </Link>
           </Summary>
         </Bottom>
       </Wrapper>
