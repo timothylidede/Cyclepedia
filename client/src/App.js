@@ -31,11 +31,9 @@ function App() {
         <Route path="cart" element={<Cart />} />
         <Route path="product/:productId" element={<Product />} />
         <Route path="products" element={<ProductList />} />
-        <Route path="registerseller" element={<RegisterSeller />} />
         <Route exact path="checkout" element={ <PrivateRoute/> } >
-          <Route exact path='checkout' element={ <Checkout/> } />
+          <Route exact path="checkout" element={<Checkout/>}/>
         </Route>
-        {/* <Route path="checkout" element={<OrderSummary />} /> */}
         <Route path="ordersummary" element={<OrderSummary />} />
       </Routes>
     </BrowserRouter>
