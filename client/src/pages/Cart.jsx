@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Add, Remove } from "@mui/icons-material";
 
 const Container = styled.div``;
@@ -139,12 +139,34 @@ const SummaryButton = styled.button`
   color: white;
   font-weight: 600;
 `;
+const MpesaButton = styled.button`
+  width: 100%;
+  padding: 10px;
+  background-color: #0eb520;
+  border: none;
+  margin-top: 10px;
+  color: white;
+  font-weight: 600;
+  transition: 0.5;
+`;
+
+const CardButton = styled.button`
+  width: 100%;
+  padding: 10px;
+  background-color: #3293a8;
+  border: none;
+  margin-top: 10px;
+  color: white;
+  font-weight: 600;
+  transition: 0.5;
+`;
 
 const Cart = () => {
   const navigate = useNavigate();
 
   const [cartItems, setCartItems] = useState([]);
   const [productDetails, setProductDetails] = useState([]);
+  const [isActive, setActive] = useState(false);
 
   useEffect(() => {
     async function getcartItems() {
@@ -185,6 +207,10 @@ const Cart = () => {
       subtotal += cost;
     }
     return subtotal;
+  };
+
+  const visible = () => {
+    setActive(true);
   };
 
   const subtotal = getSubtotal(productDetails, cartItems);
@@ -260,9 +286,33 @@ const Cart = () => {
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>Ksh {total}</SummaryItemPrice>
             </SummaryItem>
-            <Link to="/ordersummary">
-              <SummaryButton>CHECKOUT NOW</SummaryButton>
-            </Link>
+
+            <SummaryButton
+              onClick={visible}
+              style={{
+                display: isActive ? "none" : "",
+              }}
+            >
+              CHECKOUT NOW
+            </SummaryButton>
+            <a href="/checkout-mpesa">
+              <MpesaButton
+                style={{
+                  display: isActive ? "" : "none",
+                }}
+              >
+                Pay with m-pesa
+              </MpesaButton>
+            </a>
+            <a href="checkout-card">
+              <CardButton
+                style={{
+                  display: isActive ? "" : "none",
+                }}
+              >
+                Pay by card
+              </CardButton>
+            </a>
           </Summary>
         </Bottom>
       </Wrapper>

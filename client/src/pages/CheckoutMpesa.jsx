@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Navbar from "../components/Navbar";
 import Announcement from "../components/Announcement";
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer} from 'react-toastify/dist/react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Container = styled.div`
 `
@@ -110,6 +114,89 @@ margin-bottom: 30px;
 `
 
 const Checkout = () => {
+    const [phonenumber, setPhonenumber] = useState("");
+    const [cartItems, setCartItems] = useState([]);
+    const [productDetails, setProductDetails] = useState([]);
+    const [amount, setAmount] = useState("");
+
+    let navigate = useNavigate();
+    
+  useEffect(() => {
+    async function getcartItems() {
+      axios
+        .get(`http://localhost:5000/api/user/cartinfo`, {
+          headers: {
+            Authorization: "Bearer " + localStorage.authToken,
+          },
+        })
+        .then((res) => {
+          if (res.data.error) {
+            alert(res.data.error);
+          } else {
+            setCartItems(res.data.cart);
+            setProductDetails(res.data.productDetails);
+          }
+        });
+    }
+    getcartItems();
+  }, []);
+
+    const getSubtotal = (productDetails, cartItems) => {
+        let subtotal = 0;
+    
+        for (let i = 0; i < productDetails.length; i++) {
+          const cost = cartItems[i].quantity * productDetails[i].price;
+          subtotal += cost;
+        }
+        return subtotal;
+      };
+
+    const subtotal = getSubtotal(productDetails, cartItems);
+    const deliveryfee = 500000;
+    const discount = 100000;
+
+    const lipanampesa = async (e) => {
+    e.preventDefault();
+
+    const config = {
+        headers:{
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.authToken}`,
+        },
+    };
+    setAmount(subtotal + deliveryfee - discount);
+
+    try {
+        const { data } = await axios.post(
+            "http://localhost:5000/api/payment/lipanampesa", 
+            {
+                amount,
+                phonenumber,
+            },
+            config
+        );
+        console.log(data);
+
+        toast.success('Order placed!', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
+        navigate("/");
+        
+
+    } catch (error) {
+        console.log(error.response.data);
+    }
+
+    
+
+    }
+
     return (
         <Container>
             <Navbar/>
@@ -117,7 +204,7 @@ const Checkout = () => {
             <OuterWrapper>
                 <Wrapper>
                     <Title>Address Details</Title>
-                    <Form>
+                    <Form onSubmit={lipanampesa}>
                         <Hr/>
                         <Label>First Name*</Label>
                         <Input placeholder="John"></Input>
@@ -129,40 +216,26 @@ const Checkout = () => {
                         <Input placeholder="Street Name / Building / Apartment No / Floor "></Input>
                         <Label>State/Region*</Label>
                         <Dropdown>
-                            <option value = "" disabled selected hidden > select state/region</option>
+                            <option value = "" disabled defaultValue={""} hidden > select state/region</option>
                             <option value = "weed">some</option>
                             <option value = "weed2">dummy</option>
                             <option value = "weed3">options</option>
                         </Dropdown>
                         <Label>City*</Label>
                         <Dropdown>
-                            <option value = "" disabled selected hidden > select city</option>
+                            <option value = "" disabled defaultValue={""} hidden > select city</option>
                             <option value = "weed">other</option>
                             <option value = "weed2">dummy</option>
                             <option value = "weed3">options</option>
                         </Dropdown>
-                        <Action>
-                            <Button>SAVE AND CONTINUE</Button>
-                        </Action>
-                    </Form>
-                    <Title>Payment Method</Title>
-                       <Form>
-                        <Hr/>
-                           <Label>How do you want to pay for your order?</Label>
-                           <RadioGroup>
-                               <RadioLabel for="bank"><RadioInput name="payment" type="radio" id="bank"/>Bank</RadioLabel>
-                               <RadioLabel for="mpesa"><RadioInput name= "payment" type="radio" id="mpesa"/>Mpesa</RadioLabel>
-                           </RadioGroup>
-                           <Label>Name on the card*</Label>
-                        <Input placeholder="John Doe"></Input>
-                        <Label>Card number*</Label>
-                        <Input placeholder="0000 0000 0000 0000"></Input>
-                        <Label>Expiry month*</Label>
-                        <Input placeholder="MM"></Input>
-                           <Label>Expiry year*</Label>
-                           <Input placeholder="YY"></Input>
-                        <Label>CVC*</Label>
-                           <Input placeholder="000"></Input>
+                        <Label>Mobile number for payment</Label>
+                        <Input 
+                        placeholder="2547xxxxxxxx" 
+                        name="number"
+                        id="phonenumber"
+                        value={phonenumber}
+                        onChange={(e) => setPhonenumber(e.target.value)}
+                        ></Input>
                         <Action>
                             <Button>CONFIRM ORDER</Button>
                         </Action>
