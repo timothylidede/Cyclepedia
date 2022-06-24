@@ -140,30 +140,40 @@ const SummaryButton = styled.button`
   font-weight: 600;
 `;
 const MpesaButton = styled.button`
-width: 100%;
-padding: 10px;
-background-color: #0eb520;
-border: none;
-margin-top: 10px;
-color: white;
-font-weight: 600;
-transition: 0.5;
+  width: 100%;
+  padding: 10px;
+  background-color: #0eb520;
+  border: none;
+  margin-top: 10px;
+  color: white;
+  font-weight: 600;
+  transition: 0.5;
 `;
 
 const CardButton = styled.button`
-width: 100%;
-padding: 10px;
-background-color: #3293a8;
-border: none;
-margin-top: 10px;
-color: white;
-font-weight: 600;
-transition: 0.5;
+  width: 100%;
+  padding: 10px;
+  background-color: #3293a8;
+  border: none;
+  margin-top: 10px;
+  color: white;
+  font-weight: 600;
+  transition: 0.5;
+`;
+
+const RemoveButton = styled.button`
+  width: 100px;
+  padding: 10px;
+  background-color: #3293a8;
+  border: none;
+  margin-top: 10px;
+  color: white;
+  font-weight: 600;
+  transition: 0.5;
 `;
 
 const Cart = () => {
   const navigate = useNavigate();
-
   const [cartItems, setCartItems] = useState([]);
   const [productDetails, setProductDetails] = useState([]);
   const [isActive, setActive] = useState(false);
@@ -211,8 +221,52 @@ const Cart = () => {
 
   const visible = () => {
     setActive(true);
-  }
+  };
 
+  const addtocart = (e, productId) => {
+    e.preventDefault();
+    axios
+      .get(`http://localhost:5000/api/user/addtocart?productId=${productId}`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.authToken,
+        },
+      })
+      .then(() => {
+        window.location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const reducecart = (e, productId) => {
+    e.preventDefault();
+    axios
+      .get(`http://localhost:5000/api/user/reducecart?productId=${productId}`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.authToken,
+        },
+      })
+      .then(() => {
+        window.location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const removefromcart = (e, productId) => {
+    e.preventDefault();
+    axios
+      .get(
+        `http://localhost:5000/api/user/removefromcart?productId=${productId}`,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.authToken,
+          },
+        }
+      )
+      .then(() => {
+        window.location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
 
   const subtotal = getSubtotal(productDetails, cartItems);
   const deliveryfee = 500000;
@@ -250,13 +304,24 @@ const Cart = () => {
                       <ProductType>
                         <b>Type:</b> {item.category}
                       </ProductType>
+                      <RemoveButton
+                        onClick={(e) => removefromcart(e, item._id)}
+                      >
+                        Remove
+                      </RemoveButton>
                     </Details>
                   </ProductDetail>
                   <PriceDetail>
                     <ProductAmountContainer>
-                      <Remove />
+                      {cartItems[index].quantity > 1 ? (
+                        <button onClick={(e) => reducecart(e, item._id)}>
+                          <Remove />
+                        </button>
+                      ) : null}
                       <ProductAmount>{cartItems[index].quantity}</ProductAmount>
-                      <Add />
+                      <button onClick={(e) => addtocart(e, item._id)}>
+                        <Add />
+                      </button>
                     </ProductAmountContainer>
 
                     <ProductPrice>
@@ -288,27 +353,32 @@ const Cart = () => {
               <SummaryItemPrice>Ksh {total}</SummaryItemPrice>
             </SummaryItem>
 
-            <SummaryButton 
+            <SummaryButton
               onClick={visible}
               style={{
-                display: isActive ? 'none':''
+                display: isActive ? "none" : "",
               }}
-              >
-              
+            >
               CHECKOUT NOW
             </SummaryButton>
-            <a href="/checkout-mpesa"><MpesaButton
-            style={{
-              display: isActive ? '':'none'
-            }}
-            >
-              Pay with m-pesa
-            </MpesaButton></a>
-            <a href="checkout-card"><CardButton
-              style={{
-                display: isActive ? '':'none'
-              }}>
-            Pay by card</CardButton></a>
+            <a href="/checkout-mpesa">
+              <MpesaButton
+                style={{
+                  display: isActive ? "" : "none",
+                }}
+              >
+                Pay with m-pesa
+              </MpesaButton>
+            </a>
+            <a href="checkout-card">
+              <CardButton
+                style={{
+                  display: isActive ? "" : "none",
+                }}
+              >
+                Pay by card
+              </CardButton>
+            </a>
           </Summary>
         </Bottom>
       </Wrapper>

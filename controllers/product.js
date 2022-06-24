@@ -13,7 +13,7 @@ exports.addproduct = async (req, res) => {
 
 exports.allproducts = async (req, res) => {
   try {
-    const products = await Product.find().sort("-createdAt");
+    const products = await Product.find().sort("createdAt");
     res.status(200).json({ products });
   } catch (err) {
     res.status(500).json(err);
