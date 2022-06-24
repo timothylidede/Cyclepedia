@@ -114,7 +114,7 @@ margin-bottom: 30px;
 `
 
 const Checkout = () => {
-    const [phonenumber, setPhonenumber] = useState("");
+    const [phone_number, setPhonenumber] = useState("");
     const [cartItems, setCartItems] = useState([]);
     const [productDetails, setProductDetails] = useState([]);
     const [amount, setAmount] = useState("");
@@ -171,7 +171,7 @@ const Checkout = () => {
             "http://localhost:5000/api/payment/lipanampesa", 
             {
                 amount,
-                phonenumber,
+                phone_number,
             },
             config
         );
@@ -233,7 +233,7 @@ const Checkout = () => {
                         placeholder="2547xxxxxxxx" 
                         name="number"
                         id="phonenumber"
-                        value={phonenumber}
+                        value={phone_number}
                         onChange={(e) => setPhonenumber(e.target.value)}
                         ></Input>
                         <Action>
