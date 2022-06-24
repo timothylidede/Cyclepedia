@@ -118,6 +118,7 @@ const Checkout = () => {
     const [cvv, setCvv] = useState("");
     const [expiry_month, setExpirymonth] = useState("");
     const [expiry_year, setExpiryyear] = useState("");
+    const [amount, setAmount] = useState("");
     const [cartItems, setCartItems] = useState([]);
     const [productDetails, setProductDetails] = useState([]);
 
@@ -156,11 +157,11 @@ const Checkout = () => {
     const subtotal = getSubtotal(productDetails, cartItems);
     const deliveryfee = 500000;
     const discount = 100000;
-    const amount = subtotal + deliveryfee - discount;
 
-    const lipanampesa = async (e) => {
+
+    const cardpayment = async (e) => {
     e.preventDefault();
-
+    setAmount(subtotal + deliveryfee - discount);
     const config = {
         headers:{
             "Content-Type": "application/json",
@@ -170,7 +171,7 @@ const Checkout = () => {
 
     try {
         const { data } = await axios.post(
-            "/api/payment/card-payment", 
+            "http://localhost:5000/api/payment/card-payment", 
             {
                 card_number,
                 cvv,
@@ -191,7 +192,7 @@ const Checkout = () => {
             });
         navigate("/");
     } catch (error) {
-        
+        console.log(error);
     }
     
 
@@ -204,7 +205,7 @@ const Checkout = () => {
             <OuterWrapper>
                 <Wrapper>
                     <Title>Address Details</Title>
-                    <Form>
+                    <Form onSubmit={cardpayment}>
                         <Hr/>
                         <Label>First Name*</Label>
                         <Input placeholder="John"></Input>

@@ -83,7 +83,7 @@ exports.cardPayment = async (req, res, next) => {
                 "otp": "12345",
                 "flw_ref": reCallCharge.data.flw_ref
             })
-            console.log(callValidate)
+            console.log(callValidate);
 
         }
         if (response.meta.authorization.mode === 'redirect') {
