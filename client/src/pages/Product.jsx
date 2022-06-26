@@ -7,9 +7,8 @@ import Announcement from "../components/Announcement";
 import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
-import { Add, Remove } from "@mui/icons-material";
-import { toast, ToastContainer} from 'react-toastify/dist/react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from "react-toastify/dist/react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Container = styled.div``;
 
@@ -51,23 +50,6 @@ const AddContainer = styled.div`
   align-items: center;
   width: 50%;
   justify-content: space-between;
-`;
-
-const AmountContainer = styled.div`
-  display: flex;
-  align-items: center;
-  font-weight: 700;
-`;
-
-const Amount = styled.div`
-  width: 30px;
-  height: 30px;
-  border-radius: 10px;
-  border: 1px solid teal;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0px 5px;
 `;
 
 const Button = styled.span`
@@ -112,7 +94,7 @@ const Product = (props) => {
       .then((res) => {
         if (res.data.error) {
           console.log(res.data.error);
-          toast.error('Adding to cart failed', {
+          toast.error("Adding to cart failed", {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -120,9 +102,9 @@ const Product = (props) => {
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            });
+          });
         } else {
-          toast.success('Added to cart successfully', {
+          toast.success("Added to cart successfully", {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -130,7 +112,7 @@ const Product = (props) => {
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            });
+          });
         }
       })
       .catch((err) => console.log(err));
@@ -146,7 +128,7 @@ const Product = (props) => {
 
   return (
     <Container>
-      <ToastContainer 
+      <ToastContainer
         position="top-right"
         autoClose={5000}
         hideProgressBar={false}
@@ -170,11 +152,6 @@ const Product = (props) => {
           <Price>Ksh {product.price}</Price>
 
           <AddContainer>
-            <AmountContainer>
-              <Remove />
-              <Amount>1</Amount>
-              <Add />
-            </AmountContainer>
             <Button onClick={addtocart}>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>

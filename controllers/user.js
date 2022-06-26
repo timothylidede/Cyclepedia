@@ -43,6 +43,18 @@ exports.addtocart = (req, res) => {
   });
 };
 
+exports.reducecart = (req, res) => {
+  User.findOneAndUpdate(
+    { _id: req.user._id, "cart.id": req.query.productId },
+    { $inc: { "cart.$.quantity": -1 } },
+    { new: true },
+    (err, userInfo) => {
+      if (err) return res.json({ success: false, err });
+      res.status(200).json(userInfo.cart);
+    }
+  );
+};
+
 exports.removefromcart = (req, res) => {
   User.findOneAndUpdate(
     { _id: req.user._id },
@@ -58,7 +70,7 @@ exports.removefromcart = (req, res) => {
 };
 
 exports.cartinfo = (req, res) => {
-  const { fullname } = req.user
+  const { fullname } = req.user;
   const name = fullname.split(" ")[0];
 
   User.findOne({ _id: req.user._id }, (err, userInfo) => {
@@ -66,9 +78,12 @@ exports.cartinfo = (req, res) => {
     let array = cart.map((item) => {
       return item.id;
     });
+
     Product.find({ _id: { $in: array } }).exec((err, productDetails) => {
       if (err) return res.status(400).send(err);
-      return res.status(200).json({ success: true, cart, productDetails, name});
+      return res
+        .status(200)
+        .json({ success: true, cart, productDetails, name });
     });
   });
 };
