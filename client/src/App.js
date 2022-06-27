@@ -22,8 +22,7 @@ import CheckoutCard from "./pages/CheckoutCard";
 import CheckoutMpesa from "./pages/CheckoutMpesa";
 import OrderSummary from "./pages/OrderSummary";
 import RegisterSeller from "./pages/Authentication/RegisterSeller";
-
-
+import OrderHistory from "./pages/OrderHistory";
 
 function App() {
   return (
@@ -38,25 +37,32 @@ function App() {
         <Route path="signup" element={<Register />} />
         <Route path="/" element={<Home />} />
         <Route path="cart" element={<Cart />} />
+        <Route path="history" element={<OrderHistory />} />
         <Route path="product/:productId" element={<Product />} />
         <Route path="products" element={<ProductList />} />
         <Route path="admin" element={<AdminHome />} />
-        <Route path="admin/products" element={<AdminHome content={<Products />} />} />
+        <Route
+          path="admin/products"
+          element={<AdminHome content={<Products />} />}
+        />
         <Route path="admin/users" element={<AdminHome content={<Users />} />} />
-        <Route path="admin/orders" element={<AdminHome content={<Orders />} />} />
-        <Route path="admin/payments" element={<AdminHome content={<Payments />} />} />
-
-
+        <Route
+          path="admin/orders"
+          element={<AdminHome content={<Orders />} />}
+        />
+        <Route
+          path="admin/payments"
+          element={<AdminHome content={<Payments />} />}
+        />
 
         <Route path="registerseller" element={<RegisterSeller />} />
 
         {/* <Route exact path="checkout" element={ <PrivateRoute/> } > */}
-          <Route exact path="checkout-card" element={<CheckoutCard/>}/>
-          <Route exact path="checkout-mpesa" element={<CheckoutMpesa/>}/>
+        <Route exact path="checkout-card" element={<CheckoutCard />} />
+        <Route exact path="checkout-mpesa" element={<CheckoutMpesa />} />
 
         {/* </Route> */}
         <Route path="ordersummary" element={<OrderSummary />} />
-
       </Routes>
     </BrowserRouter>
   );

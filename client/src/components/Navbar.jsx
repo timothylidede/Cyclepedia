@@ -1,5 +1,5 @@
-import React, {useState, useEffect } from "react";
-import axios from "axios"
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import styled from "styled-components";
 import { Search, ShoppingCartOutlined } from "@mui/icons-material";
 import { Badge } from "@mui/material";
@@ -36,8 +36,8 @@ const NavLink = styled(Link)`
 `;
 
 const Links = styled(Link)`
-  margin: 5px 0;
-  font-size: 18px;
+  margin-left: 6px;
+  font-size: 14px;
   text-decoration: none;
   cursor: pointer;
   color: teal;
@@ -88,7 +88,7 @@ const Navbar = () => {
   let navigate = useNavigate();
 
   const [cartCount, setCartCount] = useState();
-  const[ username, setUsername]= useState();
+  const [username, setUsername] = useState();
 
   useEffect(() => {
     async function getcartItems() {
@@ -113,17 +113,21 @@ const Navbar = () => {
     getcartItems();
   }, []);
 
-
   const logoutHandler = () => {
     localStorage.removeItem("authToken");
     navigate("/");
   };
 
   let cart;
-  if(cartCount == undefined){
-    cart = <Badge badgeContent={cartCount} color="primary"> <ShoppingCartOutlined color="action" /></Badge>
-  }else{
-    cart = <ShoppingCartOutlined color="action" />
+  if (cartCount == undefined) {
+    cart = (
+      <Badge badgeContent={cartCount} color="primary">
+        {" "}
+        <ShoppingCartOutlined color="action" />
+      </Badge>
+    );
+  } else {
+    cart = <ShoppingCartOutlined color="action" />;
   }
 
   return (
@@ -137,12 +141,15 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo><NavLink to="/">CYCLEPEDIA.</NavLink></Logo>
+          <Logo>
+            <NavLink to="/">CYCLEPEDIA.</NavLink>
+          </Logo>
         </Center>
         <Right>
           {localStorage.getItem("authToken") ? (
             <MenuItem>
               <Welcome>Welcome {username}</Welcome>
+              <Links to="/history">HISTORY</Links>
               <Links to="#" onClick={logoutHandler}>
                 SIGN OUT
               </Links>
@@ -153,9 +160,7 @@ const Navbar = () => {
             </MenuItem>
           )}
           <MenuItem>
-            <Link to="/cart">
-              {cart}
-            </Link>
+            <Link to="/cart">{cart}</Link>
           </MenuItem>
         </Right>
       </Wrapper>
