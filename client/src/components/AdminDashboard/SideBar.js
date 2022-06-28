@@ -1,13 +1,19 @@
 import React from 'react'
 import { AdminSideBarStyle, SideBarLink, Button } from './admin.styles'
 import logo from '../../assets/logo.png';
+import { useNavigate } from "react-router-dom";
 
 import { HomeOutlined, WorkspacesOutlined, GroupOutlined , ShoppingBasketOutlined, PaymentsOutlined, ExitToAppOutlined} from "@mui/icons-material";
 import { Link, useLocation } from 'react-router-dom';
 
 export default function SideBar() {
+    let navigate = useNavigate();
 
     let location = useLocation();
+    const logoutHandler = () => {
+        localStorage.removeItem("authToken");
+        navigate("/login");
+      };
   return (
     <AdminSideBarStyle>
         <div className="logo_div">
@@ -40,7 +46,7 @@ export default function SideBar() {
         </SideBarLink>
 
         <div className="button_div">
-            <Button>
+            <Button onClick={logoutHandler}>
                 <ExitToAppOutlined />Logout
             </Button>
         </div>

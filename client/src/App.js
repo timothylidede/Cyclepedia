@@ -45,28 +45,39 @@ function App() {
           path="products/category/:category"
           element={<ProductCategory />}
         />
-        <Route path="admin" element={<AdminHome />} />
+        <Route path="/admin" element={<PrivateRoute/>}>
+          <Route path="/admin" element={<AdminHome />} />
+        </Route>
+        <Route path="/admin/products" element={<PrivateRoute />}>
         <Route
-          path="admin/products"
+          path="/admin/products"
           element={<AdminHome content={<Products />} />}
         />
-        <Route path="admin/users" element={<AdminHome content={<Users />} />} />
+        </Route>
+        <Route path="/admin/users" element={<PrivateRoute/>}>
+          <Route path="/admin/users" element={<AdminHome content={<Users />} />} />
+        </Route>
+        <Route path="/admin/orders" element={<PrivateRoute/>}>
         <Route
-          path="admin/orders"
+          path="/admin/orders"
           element={<AdminHome content={<Orders />} />}
         />
-        <Route
-          path="admin/payments"
-          element={<AdminHome content={<Payments />} />}
-        />
+        </Route>
+        <Route path="/admin/payments" element={<PrivateRoute/>}>
+          <Route
+            path="/admin/payments"
+            element={<AdminHome content={<Payments />} />}
+          />
+        </Route>
 
         <Route path="registerseller" element={<RegisterSeller />} />
 
-        {/* <Route exact path="checkout" element={ <PrivateRoute/> } > */}
-        <Route exact path="checkout-card" element={<CheckoutCard />} />
-        <Route exact path="checkout-mpesa" element={<CheckoutMpesa />} />
-
-        {/* </Route> */}
+        <Route exact path="/checkout-card" element={ <PrivateRoute/> } >
+        <Route exact path="/checkout-card" element={<CheckoutCard />} />
+        </Route>
+        <Route exact path="/checkout-mpesa" element={ <PrivateRoute/> } >
+        <Route exact path="/checkout-mpesa" element={<CheckoutMpesa />} />
+        </Route>
         <Route path="ordersummary" element={<OrderSummary />} />
       </Routes>
     </BrowserRouter>
