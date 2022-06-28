@@ -8,6 +8,8 @@ import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 import { Add, Remove } from "@mui/icons-material";
+import { toast, ToastContainer} from 'react-toastify/dist/react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Container = styled.div``;
 
@@ -109,9 +111,26 @@ const Product = (props) => {
       })
       .then((res) => {
         if (res.data.error) {
-          alert(res.data.error);
+          console.log(res.data.error);
+          toast.error('Adding to cart failed', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
         } else {
-          navigate("/cart");
+          toast.success('Added to cart successfully', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
         }
       })
       .catch((err) => console.log(err));
@@ -127,6 +146,18 @@ const Product = (props) => {
 
   return (
     <Container>
+      <ToastContainer 
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <Navbar />
       <Announcement />
       <Wrapper>

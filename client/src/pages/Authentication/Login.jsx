@@ -5,6 +5,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import React from 'react';
+import { toast, ToastContainer} from 'react-toastify/dist/react-toastify';
 
 const Container = styled.div`
       width: 100vw;
@@ -152,6 +153,18 @@ const Login = () => {
 
     return (
         <Container>
+            <ToastContainer 
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+            />
             <Wrapper>
                 <Image src={logo}/>
                 <Title>Sign In</Title>
