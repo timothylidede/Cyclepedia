@@ -15,7 +15,8 @@ export const AdminHomeStyle = styled.section`
     --light-dark-bg: #528aae;
     --light-bg : #bcd2e8;
     /* background-color: var(--light-dark-bg); */
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgb(247, 247, 247);
+    overflow-x: hidden;
 
 `;
 
@@ -122,7 +123,7 @@ padding: 20px 20px;
 }
 
 .module_container {
-    width: 90%;
+    width: 100%;
     height: 100%;
     padding: 20px 0;
 

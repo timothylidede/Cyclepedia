@@ -369,15 +369,6 @@ const Cart = () => {
                 Pay with m-pesa
               </MpesaButton>
             </a>
-            <a href="checkout-card">
-              <CardButton
-                style={{
-                  display: isActive ? "" : "none",
-                }}
-              >
-                Pay by card
-              </CardButton>
-            </a>
           </Summary>
         </Bottom>
       </Wrapper>
