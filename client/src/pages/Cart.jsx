@@ -283,7 +283,6 @@ const Cart = () => {
           <TopButton onClick={handleClick}>CONTINUE SHOPPING</TopButton>
           <TopTexts>
             <TopText>Shopping Bag ({cartItems.length})</TopText>
-            <TopText>Your Wishlist (0)</TopText>
           </TopTexts>
         </Top>
         <Bottom>

@@ -180,14 +180,14 @@ const Checkout = () => {
     setAmount(subtotal + deliveryfee - discount);
 
     try {
-      //const { data } = await axios.post(
-      //  "http://localhost:5000/api/payment/lipanampesa",
-      //  {
-      //    amount,
-      //    phone_number,
-      //  },
-      // config
-      //);
+      const { data } = await axios.post(
+        "http://localhost:5000/api/payment/lipanampesa",
+        {
+          amount,
+          phone_number,
+        },
+        config
+      );
       const orderData = {
         order_by: "62766e28654b7cdd3d5ee680",
         total: total,

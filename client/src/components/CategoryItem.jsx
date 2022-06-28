@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   flex: 1;
@@ -8,14 +9,14 @@ const Container = styled.div`
   position: relative;
   background-color: black;
   border-radius: 25px;
-`
+`;
 
 const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
   opacity: 0.4;
-`
+`;
 
 const Info = styled.div`
   position: absolute;
@@ -27,13 +28,13 @@ const Info = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`
+`;
 
 const Title = styled.h1`
   color: white;
   margin-bottom: 20px;
   font-size: 30px;
-`
+`;
 
 const Button = styled.button`
   border: none;
@@ -45,20 +46,25 @@ const Button = styled.button`
   font-weight: 600;
   border-radius: 25px;
   &:hover {
-    background-color:#fd7b48;
+    background-color: #fd7b48;
   }
-`
+`;
 
-const CategoryItem = ({item}) => {
-    return (
-        <Container>
-            <Image src={item.img}/>
-            <Info>
-                <Title>{item.title}</Title>
-                <Button>SHOP NOW</Button>
-            </Info>
-        </Container>
-    );
-}
+const CategoryItem = ({ item }) => {
+  const navigate = useNavigate();
+  function handleClick(e, categoryName) {
+    e.preventDefault();
+    navigate(`/products/category/${categoryName}`);
+  }
+  return (
+    <Container>
+      <Image src={item.img} />
+      <Info>
+        <Title>{item.title}</Title>
+        <Button onClick={(e) => handleClick(e, item.category)}>SHOP NOW</Button>
+      </Info>
+    </Container>
+  );
+};
 
 export default CategoryItem;

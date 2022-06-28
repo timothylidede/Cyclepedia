@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Product from "./pages/Product";
 import ProductList from "./pages/ProductList";
+import ProductCategory from "./pages/ProductCategory";
 
 import AdminHome from "./components/AdminDashboard/AdminHome";
 import Users from "./components/AdminDashboard/Users";
@@ -40,6 +41,10 @@ function App() {
         <Route path="history" element={<OrderHistory />} />
         <Route path="product/:productId" element={<Product />} />
         <Route path="products" element={<ProductList />} />
+        <Route
+          path="products/category/:category"
+          element={<ProductCategory />}
+        />
         <Route path="admin" element={<AdminHome />} />
         <Route
           path="admin/products"
