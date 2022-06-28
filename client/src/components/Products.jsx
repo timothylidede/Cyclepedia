@@ -21,7 +21,7 @@ const Products = () => {
           if (res.data.error) {
             alert(res.data.error);
           } else {
-            setProducts(res.data.products);
+            setProducts(res.data);
           }
         });
     }
