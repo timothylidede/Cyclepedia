@@ -28,6 +28,9 @@ const UserSchema = new mongoose.Schema(
       minlength: [6, "Password should be at least 6 characters long"],
       select: false,
     },
+    role: {
+      type: String
+    },
     cart: {
       type: Array,
       default: [],
