@@ -39,11 +39,11 @@ export default function SideBar() {
             <p>Payments</p>
         </SideBarLink>
 
-        <div className="button_div">
+        <a href="/" className="button_div">
             <Button>
                 <ExitToAppOutlined />Logout
             </Button>
-        </div>
+        </a>
 
     </AdminSideBarStyle>
   )

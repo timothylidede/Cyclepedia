@@ -137,7 +137,7 @@ export default function DataTable({type, datarows, datacols}) {
     // console.log("Columns: ", datacols, "Rows: ", datarows)
     
     return (
-    <TableCustomStyle style={{ display: 'flex', height: 500, width: '100%'}}>
+    <TableCustomStyle style={{ display: 'flex', height: 600, width: '100%'}}>
         <DataGrid
             rows={datarows}
             columns={datacols}
