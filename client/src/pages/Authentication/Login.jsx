@@ -141,8 +141,12 @@ const Login = () => {
                   );
 
                   localStorage.setItem("authToken", data.token)
-
+                  console.log(data);
+                  if(data.role == "admin"){
+                        navigate("/admin");
+                  }else{
                   navigate("/");
+                  }
             }catch(error){
                   setError(error.response.data.error);
                   setTimeout(() => {
