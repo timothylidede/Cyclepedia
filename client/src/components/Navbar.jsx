@@ -36,7 +36,7 @@ const NavLink = styled(Link)`
 `;
 
 const Links = styled(Link)`
-  margin-left: 6px;
+  margin-left: 16px;
   font-size: 14px;
   text-decoration: none;
   cursor: pointer;
@@ -134,21 +134,16 @@ const Navbar = () => {
     <Container>
       <Wrapper>
         <Left>
-          <Language>EN</Language>
-          <SearchContainer>
-            <Input />
-            <Search style={{ color: "gray", fontSize: 16 }} />
-          </SearchContainer>
-        </Left>
-        <Center>
           <Logo>
             <NavLink to="/">CYCLEPEDIA.</NavLink>
           </Logo>
+        </Left>
+        <Center>
+          <Welcome>Welcome {username}</Welcome>
         </Center>
         <Right>
           {localStorage.getItem("authToken") ? (
             <MenuItem>
-              <Welcome>Welcome {username}</Welcome>
               <Links to="/history">HISTORY</Links>
               <Links to="#" onClick={logoutHandler}>
                 SIGN OUT

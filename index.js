@@ -18,6 +18,8 @@ app.use("/api/products", require("./routes/product"));
 app.use("/api/user", require("./routes/user"));
 app.use("/api/payment", require("./routes/payments"));
 
+// ADDED SPECIFIC ADMIN ROUTES
+app.use("/api/admin", require("./routes/admin"));
 
 //Error Handler (should be last middleware)
 app.use(errorHandler);

@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Announcement from "../components/Announcement";
-import Products from "../components/Products";
+import Product from "../components/Product";
 import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const Container = styled.div``;
@@ -33,6 +35,14 @@ const Select = styled.select`
 `;
 const Option = styled.option``;
 
+const ProductContainer = styled.div`
+  padding: 20px;
+  display: flex;
+  flex-basis: 400px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
+
 const CategoryButton = styled.button`
   width: 100px;
   padding: 10px;
@@ -45,8 +55,27 @@ const CategoryButton = styled.button`
   border-radius: 10px;
 `;
 
-const ProductList = () => {
+const ProductCategory = () => {
   const navigate = useNavigate();
+  const [products, setProducts] = useState([]);
+  const { category } = useParams();
+
+  useEffect(() => {
+    async function getproducts(category) {
+      axios
+        .get(` http://localhost:5000/api/products/category/${category}`)
+        .then((res) => {
+          if (res.data.error) {
+            alert(res.data.error);
+          } else {
+            setProducts(res.data.products);
+          }
+        });
+    }
+    console.log(category);
+    getproducts(category);
+  }, []);
+
   function handleClick(e, categoryName) {
     e.preventDefault();
     navigate(`/products/category/${categoryName}`);
@@ -56,11 +85,12 @@ const ProductList = () => {
     e.preventDefault();
     navigate(`/products`);
   }
+
   return (
     <Container>
       <Navbar />
       <Announcement />
-      <Title>All Products</Title>
+      <Title>{category}</Title>
       <FilterContainer>
         <Filter>
           <FilterText>Categories:</FilterText>
@@ -79,11 +109,15 @@ const ProductList = () => {
           </CategoryButton>
         </Filter>
       </FilterContainer>
-      <Products />
+      <ProductContainer>
+        {products.map((item) => (
+          <Product item={item} key={item.id} />
+        ))}
+      </ProductContainer>
       <Newsletter />
       <Footer />
     </Container>
   );
 };
 
-export default ProductList;
+export default ProductCategory;
