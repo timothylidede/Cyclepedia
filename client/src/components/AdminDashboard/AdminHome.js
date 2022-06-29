@@ -45,8 +45,9 @@ const LineGraph = styled.div`
   background-color: rgb(255, 255, 255);
 `;
 const SummaryAnalytic = styled.div`
-  display: inline;
-  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   width: 50vh;
   height: 10vh;
   margin: 0 30px 0 10px;
@@ -55,27 +56,24 @@ const SummaryAnalytic = styled.div`
   background-color: rgb(255, 255, 255);
 `;
 const IconBackground = styled.div`
-  margin-top: auto;
-  margin-bottom: auto;
   width: 6vh;
   height: 6vh;
   border-radius: 50px;
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   margin-left: 10px;
 `;
 const H4Text = styled.h4`
  color: grey;
- left: 25%;
- transform: translate(25%, 100%);
+ padding-left: 100px;
 `;
 const H3Text = styled.h3`
-  left: 25%;
-  transform: translate(25%, 100%);
+  padding-left: 100px;
   font-weight: 900;
 `;
 
+const CenterVertical = styled.div`
+
+`;
 export default function AdminHome({ content }) {
 
   const [products, setProducts] = useState([]);
@@ -163,18 +161,24 @@ export default function AdminHome({ content }) {
         <Summary>
           <SummaryAnalytic>
             <IconBackground style={{ background: "#fc8f1e", boxShadow: "2.4px 4.8px 4.8px hsl(31deg 97% 55% / 0.43)" }}> <CurrencyExchangeIcon style={{ top: '50%', transform: 'translate(75%, 75%)' }} sx={{color:"white"}}/></IconBackground>
+            <CenterVertical>
             <H4Text>Total Sales</H4Text>
             <H3Text>Ksh {numberWithCommas(total)}</H3Text>
+            </CenterVertical>
           </SummaryAnalytic>
           <SummaryAnalytic>
           <IconBackground style={{ background: "#01b511", boxShadow: "2.4px 4.8px 4.8px hsl(125deg 99% 36% / 0.43)"  }}><ShoppingCartIcon style={{ top: '50%', transform: 'translate(75%, 75%)' }} sx={{color:"white"}}/></IconBackground>
+          <CenterVertical>
           <H4Text>Total Orders</H4Text>
           <H3Text>{orders.length}</H3Text>
+          </CenterVertical>
           </SummaryAnalytic>
           <SummaryAnalytic>
           <IconBackground style={{ background: "#2f68ed", boxShadow: "2.4px 4.8px 4.8px hsl(222deg 84% 56% / 0.43)"  }}><ShoppingBasketIcon style={{ top: '50%', transform: 'translate(75%, 75%)' }} sx={{color:"white"}}/></IconBackground>
+          <CenterVertical>
           <H4Text>Total Products</H4Text>
           <H3Text>{products.length}</H3Text>
+          </CenterVertical>
           </SummaryAnalytic>
         </Summary>
         <LineGraph>
