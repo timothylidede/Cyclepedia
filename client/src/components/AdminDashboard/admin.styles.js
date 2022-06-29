@@ -9,7 +9,6 @@ export const AdminHomeStyle = styled.section`
     width: 100%;
     height: 1000px;
     font-family: 'Open Sans', sans-serif;
-    svg { margin-right: 8px; }
 
     --dark-bg : #1e3f66;
     --light-dark-bg: #528aae;
