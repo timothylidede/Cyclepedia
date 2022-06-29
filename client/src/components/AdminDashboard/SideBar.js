@@ -22,27 +22,27 @@ export default function SideBar() {
 
         <SideBarLink href="/admin" className={ location.pathname === '/admin' ? "active" : ""}>
             <HomeOutlined />
-            <p>Home</p>
+            <p style={{ marginLeft: "8px" }}>Home</p>
         </SideBarLink>
 
         <SideBarLink href="/admin/products" className={ location.pathname === '/admin/products' ? "active" : ""}>
             <WorkspacesOutlined />
-            <p>Products</p>
+            <p style={{ marginLeft: "8px" }}>Products</p>
         </SideBarLink>
 
         <SideBarLink href="/admin/users" className={ location.pathname === '/admin/users' ? "active" : ""}>
             <GroupOutlined />
-            <p>Users</p>
+            <p style={{ marginLeft: "8px" }}>Users</p>
         </SideBarLink>
 
         <SideBarLink href="/admin/orders" className={ location.pathname === '/admin/orders' ? "active" : ""}>
             <ShoppingBasketOutlined />
-            <p>Orders</p>
+            <p style={{ marginLeft: "8px" }}>Orders</p>
         </SideBarLink>
 
         <SideBarLink href="/admin/payments" className={ location.pathname === '/admin/payments' ? "active" : ""}>
             <PaymentsOutlined />
-            <p>Payments</p>
+            <p style={{ marginLeft: "8px" }}>Payments</p>
         </SideBarLink>
 
         <div className="button_div">
